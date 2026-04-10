@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Venue Oaón — Website Design Options</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --white:    #FFFFFF;
+      --linen:    #F5F2EE;
+      --stone:    #8C8578;
+      --charcoal: #1A1A1A;
+      --forest:   #002D03;
+      --divider:  #E0DDD8;
+      --fh: 'Tenor Sans', serif;
+      --fb: 'Inter', sans-serif;
+      --xs: 0.625rem;
+      --sm: 0.8125rem;
+      --g: clamp(1.5rem, 5vw, 3.5rem);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--fb);
+      background: var(--charcoal);
+      color: var(--white);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    /* ── TOP BAR ─────────────────────────────────────────────── */
+    .topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem var(--g);
+      border-bottom: 0.5px solid rgba(255,255,255,0.08);
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(26,26,26,0.97); backdrop-filter: blur(12px);
+    }
+    .topbar-logo {
+      display: flex; flex-direction: column; gap: 2px;
+    }
+    .topbar-logo-name {
+      font-family: var(--fh); font-size: 0.75rem;
+      letter-spacing: 0.26em; text-transform: uppercase; line-height: 1;
+    }
+    .topbar-logo-sub {
+      font-size: 0.45rem; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--stone); line-height: 1;
+      font-weight: 300;
+    }
+    .topbar-from {
+      font-size: var(--xs); letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--stone);
+    }
+    .topbar-from span { color: rgba(255,255,255,0.5); }
+
+    /* ── INTRO ───────────────────────────────────────────────── */
+    .intro {
+      padding: clamp(3rem, 6vw, 5rem) var(--g) clamp(2rem, 4vw, 3rem);
+      max-width: 860px;
+    }
+    .intro-label {
+      font-size: var(--xs); letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--stone); display: flex; align-items: center; gap: 12px;
+      margin-bottom: 1.5rem;
+    }
+    .intro-label::before {
+      content: ''; display: block; width: 24px; height: 0.5px; background: var(--stone);
+    }
+    .intro-heading {
+      font-family: var(--fh);
+      font-size: clamp(1.75rem, 4vw, 3rem);
+      font-weight: 400; letter-spacing: 0.02em; line-height: 1.1;
+      margin-bottom: 1.25rem;
+    }
+    .intro-body {
+      font-size: var(--sm); color: var(--stone); line-height: 1.8;
+      max-width: 560px;
+    }
+    .intro-instruction {
+      display: flex; align-items: center; gap: 0.75rem;
+      margin-top: 2rem;
+      font-size: var(--xs); letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+    .intro-instruction::before {
+      content: '↓'; font-size: 1rem; color: rgba(255,255,255,0.2);
+    }
+
+    /* ── OPTION TABS ─────────────────────────────────────────── */
+    .tabs-bar {
+      position: sticky; top: 57px; z-index: 100;
+      background: rgba(26,26,26,0.97); backdrop-filter: blur(12px);
+      border-bottom: 0.5px solid rgba(255,255,255,0.08);
+      padding: 0 var(--g);
+      display: flex; align-items: stretch; gap: 0;
+    }
+
+    .tab-btn {
+      background: none; border: none; cursor: pointer;
+      font-family: var(--fb); font-size: var(--xs);
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--stone); padding: 1.125rem 1.75rem;
+      position: relative; transition: color 0.2s ease;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px; min-height: 52px;
+      display: flex; flex-direction: column; align-items: flex-start; gap: 3px;
+    }
+    .tab-btn:hover { color: rgba(255,255,255,0.7); }
+    .tab-btn.active {
+      color: var(--white);
+      border-bottom-color: var(--white);
+    }
+    .tab-sub {
+      font-size: 0.5rem; letter-spacing: 0.18em; color: var(--stone);
+      display: block; text-transform: uppercase;
+    }
+    .tab-btn.active .tab-sub { color: rgba(255,255,255,0.4); }
+
+    /* ── PREVIEW AREA ────────────────────────────────────────── */
+    .preview-wrap {
+      padding: 2rem var(--g);
+      display: none;
+    }
+    .preview-wrap.active { display: block; }
+
+    /* Description card above iframe */
+    .preview-desc {
+      display: flex; flex-wrap: wrap;
+      align-items: flex-start; justify-content: space-between;
+      gap: 1.5rem; margin-bottom: 1.5rem;
+    }
+    .preview-desc-left { display: flex; flex-direction: column; gap: 0.5rem; max-width: 600px; }
+    .preview-number {
+      font-size: var(--xs); letter-spacing: 0.2em; text-transform: uppercase; color: var(--stone);
+    }
+    .preview-title {
+      font-family: var(--fh); font-size: clamp(1rem, 2.5vw, 1.375rem);
+      font-weight: 400; letter-spacing: 0.03em;
+    }
+    .preview-body { font-size: var(--sm); color: var(--stone); line-height: 1.7; }
+    .preview-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.25rem; }
+    .tag {
+      font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 2px;
+      background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.45);
+      border: 0.5px solid rgba(255,255,255,0.1);
+    }
+
+    .preview-actions { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; }
+    .btn-open {
+      font-family: var(--fh); font-size: var(--xs); letter-spacing: 0.16em;
+      text-transform: uppercase; padding: 12px 24px; border-radius: 2px;
+      background: var(--white); color: var(--charcoal);
+      border: none; cursor: pointer; min-height: 44px;
+      display: inline-flex; align-items: center; gap: 8px;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .btn-open:hover { background: var(--linen); }
+    .btn-open svg { width: 12px; height: 12px; opacity: 0.5; }
+
+    /* Device toggle */
+    .device-toggle {
+      display: flex; gap: 2px;
+      background: rgba(255,255,255,0.06); border-radius: 4px; padding: 3px;
+    }
+    .device-btn {
+      background: none; border: none; cursor: pointer;
+      padding: 7px 10px; border-radius: 2px; transition: background 0.2s;
+      color: var(--stone); display: flex; align-items: center;
+      min-height: 36px; min-width: 36px; justify-content: center;
+    }
+    .device-btn.active { background: rgba(255,255,255,0.1); color: var(--white); }
+    .device-btn svg { width: 16px; height: 16px; }
+
+    /* The iframe frame */
+    .iframe-shell {
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+      position: relative;
+      transition: max-width 0.4s ease;
+      margin: 0 auto;
+    }
+    .iframe-shell--desktop { max-width: 100%; }
+    .iframe-shell--tablet  { max-width: 768px; }
+    .iframe-shell--mobile  { max-width: 390px; }
+
+    /* Fake browser chrome */
+    .iframe-chrome {
+      background: #2A2A2A; padding: 10px 14px;
+      display: flex; align-items: center; gap: 10px;
+      border-bottom: 1px solid rgba(0,0,0,0.3);
+    }
+    .chrome-dots { display: flex; gap: 6px; }
+    .chrome-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+    }
+    .chrome-dot--red    { background: #FF5F57; }
+    .chrome-dot--yellow { background: #FEBC2E; }
+    .chrome-dot--green  { background: #28C840; }
+    .chrome-url {
+      flex: 1; background: rgba(255,255,255,0.08); border-radius: 4px;
+      padding: 5px 12px; font-size: 0.7rem; color: rgba(255,255,255,0.35);
+      font-family: var(--fb); letter-spacing: 0.02em;
+    }
+
+    iframe {
+      width: 100%; border: none; display: block;
+      height: 85vh; min-height: 600px;
+    }
+
+    /* ── FOOTER ──────────────────────────────────────────────── */
+    .footer {
+      padding: 2rem var(--g);
+      border-top: 0.5px solid rgba(255,255,255,0.06);
+      display: flex; flex-wrap: wrap; gap: 1rem;
+      align-items: center; justify-content: space-between;
+      margin-top: 3rem;
+    }
+    .footer-left { font-size: var(--xs); letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.2); }
+    .footer-right { font-size: var(--xs); letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.2); }
+    .footer-right span { color: rgba(255,255,255,0.4); }
+
+    /* ── RESPONSIVE HIDE ─────────────────────────────────────── */
+    @media (max-width: 600px) {
+      .device-toggle { display: none; }
+      .tab-sub { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="topbar-logo">
+      <span class="topbar-logo-name">Venue Oaón</span>
+      <span class="topbar-logo-sub">Modern Events</span>
+    </div>
+    <p class="topbar-from">Website proposal <span>· Crestline Creative</span></p>
+  </header>
+
+  <!-- INTRO -->
+  <div class="intro">
+    <p class="intro-label">Your website, three ways</p>
+    <h1 class="intro-heading">Three design directions.<br />One decision.</h1>
+    <p class="intro-body">
+      Each option below is a fully built, responsive website — ready to go live the moment
+      you choose. Same content, same brand system, three different personalities.
+      Browse each one, open it full screen, and see how it feels.
+    </p>
+    <p class="intro-instruction">Select an option below to preview</p>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs-bar" role="tablist" aria-label="Website design options">
+    <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="panel-1" id="tab-1" data-panel="panel-1">
+      Option 1
+      <span class="tab-sub">Warm · Photo-forward</span>
+    </button>
+    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-2" id="tab-2" data-panel="panel-2">
+      Option 2
+      <span class="tab-sub">Editorial · Split layout</span>
+    </button>
+    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-3" id="tab-3" data-panel="panel-3">
+      Option 3
+      <span class="tab-sub">Minimal · Type-only</span>
+    </button>
+  </div>
+
+  <!-- PANEL 1 -->
+  <div class="preview-wrap active" id="panel-1" role="tabpanel" aria-labelledby="tab-1">
+    <div class="preview-desc">
+      <div class="preview-desc-left">
+        <span class="preview-number">Option 01</span>
+        <h2 class="preview-title">Warm & Photo-Forward</h2>
+        <p class="preview-body">The hero sits low on the page — a full warm gradient that transforms into a stunning backdrop the moment real venue photos are added. Light-led, airy, and immediately welcoming. A great choice if you want the imagery to do the talking.</p>
+        <div class="preview-tags">
+          <span class="tag">Full-bleed hero</span>
+          <span class="tag">Suite cards</span>
+          <span class="tag">Photo-ready</span>
+          <span class="tag">Warm & inviting</span>
+        </div>
+      </div>
+      <div class="preview-actions">
+        <div class="device-toggle" role="group" aria-label="Preview device size">
+          <button class="device-btn active" data-device="desktop" data-iframe="frame-1" aria-label="Desktop view">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="2" y="3" width="20" height="14" rx="1"/><path d="M8 21h8M12 17v4"/></svg>
+          </button>
+          <button class="device-btn" data-device="tablet" data-iframe="frame-1" aria-label="Tablet view">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="4" y="2" width="16" height="20" rx="1"/><circle cx="12" cy="18" r="1" fill="currentColor" stroke="none"/></svg>
+          </button>
+          <button class="device-btn" data-device="mobile" data-iframe="frame-1" aria-label="Mobile view">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="6" y="2" width="12" height="20" rx="2"/><circle cx="12" cy="18" r="1" fill="currentColor" stroke="none"/></svg>
+          </button>
+        </div>
+        <a href="option1.html" target="_blank" rel="noopener noreferrer" class="btn-open">
+          Open full screen
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 11L11 1M11 1H5M11 1V7"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="iframe-shell iframe-shell--desktop" id="shell-1">
+      <div class="iframe-chrome">
+        <div class="chrome-dots">
+          <div class="chrome-dot chrome-dot--red"></div>
+          <div class="chrome-dot chrome-dot--yellow"></div>
+          <div class="chrome-dot chrome-dot--green"></div>
+        </div>
+        <div class="chrome-url">venueoaon.co.za</div>
+      </div>
+      <iframe id="frame-1" src="option1.html" title="Venue Oaón — Option 1: Warm photo-forward design" loading="lazy"></iframe>
+    </div>
+  </div>
+
+  <!-- PANEL 2 -->
+  <div class="preview-wrap" id="panel-2" role="tabpanel" aria-labelledby="tab-2">
+    <div class="preview-desc">
+      <div class="preview-desc-left">
+        <span class="preview-number">Option 02</span>
+        <h2 class="preview-title">Editorial & Split Layout</h2>
+        <p class="preview-body">The hero divides the screen — strong editorial typography on the left, a tall photo panel on the right. The suites appear as an elegant horizontal list rather than cards. Considered, structured, and quietly confident. A magazine meets a boutique hotel website.</p>
+        <div class="preview-tags">
+          <span class="tag">Split hero</span>
+          <span class="tag">Suite list layout</span>
+          <span class="tag">Sidebar inquiry</span>
+          <span class="tag">Magazine feel</span>
+        </div>
+      </div>
+      <div class="preview-actions">
+        <div class="device-toggle" role="group" aria-label="Preview device size">
+          <button class="device-btn active" data-device="desktop" data-iframe="frame-2" aria-label="Desktop view">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="2" y="3" width="20" height="14" rx="1"/><path d="M8 21h8M12 17v4"/></svg>
+          </button>
+          <button class="device-btn" data-device="tablet" data-iframe="frame-2" aria-label="Tablet view">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="4" y="2" width="16" height="20" rx="1"/><circle cx="12" cy="18" r="1" fill="currentColor" stroke="none"/></svg>
+          </button>
+          <button class="device-btn" data-device="mobile" data-iframe="frame-2" aria-label="Mobile view">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="6" y="2" width="12" height="20" rx="2"/><circle cx="12" cy="18" r="1" fill="currentColor" stroke="none"/></svg>
+          </button>
+        </div>
+        <a href="option2.html" target="_blank" rel="noopener noreferrer" class="btn-open">
+          Open full screen
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 11L11 1M11 1H5M11 1V7"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="iframe-shell iframe-shell--desktop" id="shell-2">
+      <div class="iframe-chrome">
+        <div class="chrome-dots">
+          <div class="chrome-dot chrome-dot--red"></div>
+          <div class="chrome-dot chrome-dot--yellow"></div>
+          <div class="chrome-dot chrome-dot--green"></div>
+        </div>
+        <div class="chrome-url">venueoaon.co.za</div>
+      </div>
+      <iframe id="frame-2" src="option2.html" title="Venue Oaón — Option 2: Editorial split layout" loading="lazy"></iframe>
+    </div>
+  </div>
+
+  <!-- PANEL 3 -->
+  <div class="preview-wrap" id="panel-3" role="tabpanel" aria-labelledby="tab-3">
+    <div class="preview-desc">
+      <div class="preview-desc-left">
+        <span class="preview-number">Option 03</span>
+        <h2 class="preview-title">Minimal & Type-Only</h2>
+        <p class="preview-body">No hero photo at all — the typography carries everything. A ghosted "20" fills the background with quiet confidence. The suites and details sections use full-width row layouts with generous breathing room. The bravest of the three — and the most distinctive.</p>
+        <div class="preview-tags">
+          <span class="tag">No hero image</span>
+          <span class="tag">Row layouts</span>
+          <span class="tag">Maximum whitespace</span>
+          <span class="tag">Most distinctive</span>
+        </div>
+      </div>
+      <div class="preview-actions">
+        <div class="device-toggle" role="group" aria-label="Preview device size">
+          <button class="device-btn active" data-device="desktop" data-iframe="frame-3" aria-label="Desktop view">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="2" y="3" width="20" height="14" rx="1"/><path d="M8 21h8M12 17v4"/></svg>
+          </button>
+          <button class="device-btn" data-device="tablet" data-iframe="frame-3" aria-label="Tablet view">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="4" y="2" width="16" height="20" rx="1"/><circle cx="12" cy="18" r="1" fill="currentColor" stroke="none"/></svg>
+          </button>
+          <button class="device-btn" data-device="mobile" data-iframe="frame-3" aria-label="Mobile view">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><rect x="6" y="2" width="12" height="20" rx="2"/><circle cx="12" cy="18" r="1" fill="currentColor" stroke="none"/></svg>
+          </button>
+        </div>
+        <a href="option3.html" target="_blank" rel="noopener noreferrer" class="btn-open">
+          Open full screen
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 11L11 1M11 1H5M11 1V7"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="iframe-shell iframe-shell--desktop" id="shell-3">
+      <div class="iframe-chrome">
+        <div class="chrome-dots">
+          <div class="chrome-dot chrome-dot--red"></div>
+          <div class="chrome-dot chrome-dot--yellow"></div>
+          <div class="chrome-dot chrome-dot--green"></div>
+        </div>
+        <div class="chrome-url">venueoaon.co.za</div>
+      </div>
+      <iframe id="frame-3" src="option3.html" title="Venue Oaón — Option 3: Minimal type-only design" loading="lazy"></iframe>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p class="footer-left">Venue Oaón · Website Proposal · 2025</p>
+    <p class="footer-right">Prepared by <span>Crestline Creative</span></p>
+  </footer>
+
+  <script defer>
+    // ── TAB SWITCHING ──────────────────────────────────────────
+    // When a tab is clicked, hide all panels and show the right one.
+    const tabs   = document.querySelectorAll('.tab-btn');
+    const panels = document.querySelectorAll('.preview-wrap');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.panel;
+
+        // Deactivate all tabs and panels
+        tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+        panels.forEach(p => p.classList.remove('active'));
+
+        // Activate clicked tab and matching panel
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        document.getElementById(target).classList.add('active');
+
+        // Scroll to the top of the preview area
+        window.scrollTo({ top: 120, behavior: 'smooth' });
+      });
+    });
+
+    // ── DEVICE SIZE TOGGLE ─────────────────────────────────────
+    // Changes the max-width of the iframe shell to simulate devices.
+    const deviceBtns = document.querySelectorAll('.device-btn');
+
+    deviceBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const device   = btn.dataset.device;   // 'desktop', 'tablet', or 'mobile'
+        const iframeId = btn.dataset.iframe;   // which iframe this button controls
+        const iframe   = document.getElementById(iframeId);
+        const shell    = iframe.closest('.iframe-shell');
+
+        // Find sibling device buttons in the same toggle group
+        const group = btn.closest('.device-toggle');
+        group.querySelectorAll('.device-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Swap the shell class to change max-width
+        shell.className = shell.className.replace(/iframe-shell--\w+/, '');
+        shell.classList.add(`iframe-shell--${device}`);
+      });
+    });
+  </script>
+</body>
+</html>
