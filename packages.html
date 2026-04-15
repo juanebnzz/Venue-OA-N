@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Packages — Venue Oaón</title>
+  <meta name="description" content="Décor packages for your event at Venue Oaón — from Essential to Grand, in partnership with Oaón Events." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    /* ── PACKAGES PAGE ───────────────────────────────────────── */
+    .pkg-grid {
+      display: grid; gap: 1px; background: var(--divider);
+      border: 0.5px solid var(--divider); border-radius: 10px; overflow: hidden;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 640px)  { .pkg-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .pkg-grid { grid-template-columns: repeat(4, 1fr); } }
+
+    .pkg {
+      background: var(--white); padding: 2.5rem 2rem;
+      display: flex; flex-direction: column; gap: 1.5rem;
+      transition: background 0.2s;
+    }
+    .pkg:hover { background: var(--linen); }
+    .pkg--featured { background: var(--forest); color: white; }
+    .pkg--featured:hover { background: #003a04; }
+
+    .pkg-tag { font-size: var(--xs); letter-spacing: 0.14em; text-transform: uppercase; background: rgba(255,255,255,0.15); color: white; padding: 4px 10px; border-radius: 2px; align-self: flex-start; }
+    .pkg-name { font-family: var(--fh); font-size: 1.25rem; letter-spacing: 0.04em; }
+    .pkg--featured .pkg-name { color: white; }
+    .pkg-enquire { font-size: var(--sm); color: var(--stone); display: flex; align-items: center; gap: 0.5rem; }
+    .pkg--featured .pkg-enquire { color: rgba(255,255,255,0.5); }
+    .pkg-enquire-link { font-size: var(--xs); letter-spacing: 0.14em; text-transform: uppercase; text-decoration: underline; text-underline-offset: 3px; color: var(--forest); transition: color 0.2s; }
+    .pkg--featured .pkg-enquire-link { color: rgba(255,255,255,0.6); }
+    .pkg-enquire-link:hover { color: var(--charcoal); }
+    .pkg--featured .pkg-enquire-link:hover { color: white; }
+
+    .pkg-divider { border: none; border-top: 0.5px solid var(--divider); }
+    .pkg--featured .pkg-divider { border-color: rgba(255,255,255,0.15); }
+
+    .pkg-section-title { font-size: var(--xs); letter-spacing: 0.18em; text-transform: uppercase; color: var(--stone); margin-bottom: 0.75rem; display: block; }
+    .pkg--featured .pkg-section-title { color: rgba(255,255,255,0.4); }
+
+    .pkg ul { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; }
+    .pkg li { font-size: var(--sm); color: var(--stone); display: flex; gap: 0.625rem; line-height: 1.5; }
+    .pkg--featured li { color: rgba(255,255,255,0.75); }
+    .pkg li::before { content: '–'; flex-shrink: 0; color: var(--divider); }
+    .pkg--featured li::before { color: rgba(255,255,255,0.2); }
+
+    /* Suite hire info strip */
+    .hire-strip {
+      background: var(--charcoal); padding: 2.5rem var(--g);
+      border-radius: 10px; margin-bottom: clamp(3rem, 6vw, 5rem);
+    }
+    .hire-strip-inner {
+      max-width: var(--max); margin: 0 auto;
+      display: flex; flex-wrap: wrap; align-items: center;
+      justify-content: space-between; gap: 1.5rem;
+    }
+    .hire-info { display: flex; flex-direction: column; gap: 0.5rem; }
+    .hire-title { font-family: var(--fh); font-size: clamp(1.125rem, 2.5vw, 1.5rem); font-weight: 400; letter-spacing: 0.02em; color: white; }
+    .hire-sub { font-size: var(--sm); color: var(--stone); line-height: 1.6; max-width: 480px; }
+
+    /* Suite at a glance */
+    .suite-glance {
+      display: grid; gap: 1rem; grid-template-columns: 1fr;
+      margin-top: clamp(3rem, 6vw, 5rem);
+    }
+    @media (min-width: 640px) { .suite-glance { grid-template-columns: repeat(3, 1fr); } }
+    .glance-card {
+      background: var(--white); border: 0.5px solid var(--divider);
+      border-radius: 8px; padding: 1.75rem;
+      display: flex; flex-direction: column; gap: 0.75rem;
+    }
+    .glance-name { font-family: var(--fh); font-size: 1.0625rem; letter-spacing: 0.04em; }
+    .glance-type { font-size: var(--xs); letter-spacing: 0.14em; text-transform: uppercase; color: var(--stone); }
+    .glance-cap { font-family: var(--fh); font-size: 1.375rem; letter-spacing: 0.02em; margin-top: 0.25rem; }
+    .glance-cap-label { font-size: var(--xs); letter-spacing: 0.14em; text-transform: uppercase; color: var(--stone); }
+
+    /* Add-ons callout */
+    .addons {
+      background: var(--linen); border-radius: 10px;
+      padding: 3rem; margin-top: clamp(3rem, 6vw, 5rem);
+    }
+    .addons-grid { display: grid; grid-template-columns: 1fr; gap: 0.5rem; margin-top: 1.5rem; }
+    @media (min-width: 640px) { .addons-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 900px) { .addons-grid { grid-template-columns: repeat(3, 1fr); } }
+    .addon-item {
+      display: flex; gap: 0.75rem; align-items: flex-start;
+      padding: 0.875rem 0; border-bottom: 0.5px solid var(--divider);
+    }
+    .addon-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--forest); flex-shrink: 0; margin-top: 6px; }
+    .addon-text { font-size: var(--sm); color: var(--stone); line-height: 1.5; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo"><span class="nav-logo-name">Venue Oaón</span><span class="nav-logo-sub">Modern Events</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li>
+      <li><a href="packages.html">Packages</a></li><li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="contact.html" class="nav-cta">Enquire</a>
+      <button class="hamburger" id="hbg" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <nav class="mobile-menu" id="mob">
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="packages.html">Packages</a>
+    <a href="gallery.html">Gallery</a><a href="contact.html">Contact</a>
+    <a href="contact.html" style="color:var(--forest);">Begin the Inquiry →</a>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-bg" aria-hidden="true"></div>
+    <div class="page-hero-content">
+      <div class="page-hero-eyebrow"><span class="label">Décor & Packages</span></div>
+      <h1>Décor done<br />for you.</h1>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <section class="section">
+    <div class="wrap">
+      <div class="reveal" style="max-width:640px;">
+        <span class="label" style="display:block;margin-bottom:1rem;">In partnership with Oaón Events</span>
+        <p class="section-title" style="font-size:clamp(1.25rem,2.5vw,1.75rem);margin-bottom:1.25rem;">Every package is offered through our sister company, Oaón Events — a team that has spent a decade turning rooms into moments.</p>
+        <p class="section-body">Choose your package, add it to your suite hire, and arrive to a space that's already been made beautiful. All pricing is shared on enquiry — every event is different, and we want to quote you properly.</p>
+      </div>
+
+      <!-- Suite hire strip -->
+      <div class="hire-strip reveal" style="margin-top:clamp(3rem,6vw,5rem);">
+        <div class="hire-inner" style="max-width:var(--max);margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem;">
+          <div class="hire-info">
+            <p class="hire-title">Suite hire is separate from décor packages.</p>
+            <p class="hire-sub">Each suite is available to hire independently. Décor packages are add-ons — mix and match what your event needs. Enquire for full pricing on both.</p>
+          </div>
+          <a href="contact.html" class="btn" style="background:white;color:var(--charcoal);">Enquire for Pricing</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PACKAGES GRID -->
+  <section class="section section--linen">
+    <div class="wrap">
+      <div class="section-header reveal">
+        <span class="label">Décor Packages</span>
+        <h2 class="section-title" style="margin-top:1rem;">Four tiers. Every occasion.</h2>
+      </div>
+      <div class="pkg-grid">
+        <!-- Essential -->
+        <div class="pkg reveal">
+          <div>
+            <p class="pkg-name">Essential</p>
+            <p class="pkg-enquire">Enquire for pricing &nbsp;<a href="contact.html" class="pkg-enquire-link">Get a quote →</a></p>
+          </div>
+          <hr class="pkg-divider" />
+          <div>
+            <span class="pkg-section-title">What's included</span>
+            <ul>
+              <li>Balloon arch (single colour)</li>
+              <li>10 bamboo chairs</li>
+              <li>Linen tablecloths</li>
+              <li>Basic floral centrepieces</li>
+              <li>Setup included</li>
+            </ul>
+          </div>
+          <div>
+            <span class="pkg-section-title">Best for</span>
+            <ul><li>Intimate kitchen teas</li><li>Simple birthday lunches</li></ul>
+          </div>
+        </div>
+
+        <!-- Signature -->
+        <div class="pkg pkg--featured reveal d1">
+          <span class="pkg-tag">Most popular</span>
+          <div>
+            <p class="pkg-name">Signature</p>
+            <p class="pkg-enquire">Enquire for pricing &nbsp;<a href="contact.html" class="pkg-enquire-link">Get a quote →</a></p>
+          </div>
+          <hr class="pkg-divider" />
+          <div>
+            <span class="pkg-section-title">What's included</span>
+            <ul>
+              <li>Custom balloon arch</li>
+              <li>20 bamboo chairs</li>
+              <li>Styled backdrop</li>
+              <li>Fresh florals + centrepieces</li>
+              <li>Table linen + runners</li>
+              <li>Setup & breakdown</li>
+            </ul>
+          </div>
+          <div>
+            <span class="pkg-section-title">Best for</span>
+            <ul><li>Baby showers & kitchen teas</li><li>Bridal showers</li></ul>
+          </div>
+        </div>
+
+        <!-- Premier -->
+        <div class="pkg reveal d2">
+          <div>
+            <p class="pkg-name">Premier</p>
+            <p class="pkg-enquire">Enquire for pricing &nbsp;<a href="contact.html" class="pkg-enquire-link">Get a quote →</a></p>
+          </div>
+          <hr class="pkg-divider" />
+          <div>
+            <span class="pkg-section-title">What's included</span>
+            <ul>
+              <li>Full custom décor design</li>
+              <li>30 bamboo chairs</li>
+              <li>Balloon installation</li>
+              <li>Floral arrangements</li>
+              <li>Themed backdrop wall</li>
+              <li>Catering coordination</li>
+              <li>Setup & breakdown</li>
+            </ul>
+          </div>
+          <div>
+            <span class="pkg-section-title">Best for</span>
+            <ul><li>Bridal showers & milestone birthdays</li></ul>
+          </div>
+        </div>
+
+        <!-- Grand -->
+        <div class="pkg reveal d3">
+          <div>
+            <p class="pkg-name">Grand</p>
+            <p class="pkg-enquire">Enquire for pricing &nbsp;<a href="contact.html" class="pkg-enquire-link">Get a quote →</a></p>
+          </div>
+          <hr class="pkg-divider" />
+          <div>
+            <span class="pkg-section-title">What's included</span>
+            <ul>
+              <li>Bespoke concept design</li>
+              <li>Full suite transformation</li>
+              <li>Floral ceiling installation</li>
+              <li>Custom neon / signage</li>
+              <li>Catering + serving staff</li>
+              <li>Photography coordination</li>
+              <li>Full event management</li>
+            </ul>
+          </div>
+          <div>
+            <span class="pkg-section-title">Best for</span>
+            <ul><li>Signature celebrations</li><li>Full turnkey events</li></ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Suites at a glance -->
+      <div class="section-header reveal" style="margin-top:clamp(4rem,8vw,7rem);">
+        <span class="label">The Suites</span>
+        <h2 class="section-title" style="margin-top:1rem;">Pair your package with a suite.</h2>
+      </div>
+      <div class="suite-glance">
+        <div class="glance-card reveal">
+          <h3 class="glance-name">The Myrrh Suite</h3>
+          <span class="glance-type">Indoor</span>
+          <hr style="border:none;border-top:0.5px solid var(--divider);margin:0.25rem 0;" />
+          <p class="glance-cap">30–40 <span class="glance-cap-label">guests</span></p>
+          <p style="font-size:var(--sm);color:var(--stone);line-height:1.6;">White-washed walls, soft natural light. Perfect for kitchen teas and bridal showers.</p>
+        </div>
+        <div class="glance-card reveal d1">
+          <h3 class="glance-name">The Olive Suite</h3>
+          <span class="glance-type">Indoor / Outdoor</span>
+          <hr style="border:none;border-top:0.5px solid var(--divider);margin:0.25rem 0;" />
+          <p class="glance-cap">20–30 <span class="glance-cap-label">guests</span></p>
+          <p style="font-size:var(--sm);color:var(--stone);line-height:1.6;">Indoor lounge flowing to outdoor patio. Ideal for baby showers and garden gatherings.</p>
+        </div>
+        <div class="glance-card reveal d2">
+          <h3 class="glance-name">The Garden Suite</h3>
+          <span class="glance-type">Outdoor</span>
+          <hr style="border:none;border-top:0.5px solid var(--divider);margin:0.25rem 0;" />
+          <p class="glance-cap">30–40 <span class="glance-cap-label">guests</span></p>
+          <p style="font-size:var(--sm);color:var(--stone);line-height:1.6;">Open garden setting with greenery and dappled shade. Beautiful for milestone celebrations.</p>
+        </div>
+      </div>
+
+      <!-- Add-ons -->
+      <div class="addons reveal">
+        <span class="label" style="display:block;margin-bottom:0.75rem;">Optional Add-ons</span>
+        <h3 style="font-family:var(--fh);font-size:1.25rem;font-weight:400;letter-spacing:0.02em;">Everything else you might need.</h3>
+        <div class="addons-grid">
+          <div class="addon-item"><span class="addon-dot"></span><span class="addon-text">Neon sign hire</span></div>
+          <div class="addon-item"><span class="addon-dot"></span><span class="addon-text">Photo booth setup</span></div>
+          <div class="addon-item"><span class="addon-dot"></span><span class="addon-text">Catering coordination</span></div>
+          <div class="addon-item"><span class="addon-dot"></span><span class="addon-text">Photographer referral</span></div>
+          <div class="addon-item"><span class="addon-dot"></span><span class="addon-text">Custom cake table styling</span></div>
+          <div class="addon-item"><span class="addon-dot"></span><span class="addon-text">Confetti cannon setup</span></div>
+          <div class="addon-item"><span class="addon-dot"></span><span class="addon-text">Welcome arch florals</span></div>
+          <div class="addon-item"><span class="addon-dot"></span><span class="addon-text">Personalised signage</span></div>
+          <div class="addon-item"><span class="addon-dot"></span><span class="addon-text">Serving staff (per hour)</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" style="text-align:center;">
+    <div class="wrap reveal">
+      <span class="label" style="display:block;margin-bottom:1rem;">Ready to plan?</span>
+      <h2 class="section-title" style="margin-bottom:1.25rem;">Let's talk about your event.</h2>
+      <p class="section-body" style="max-width:480px;margin:0 auto 2rem;">We'll send you a full pricing guide and talk through what makes sense for your occasion. No pressure — just a conversation.</p>
+      <a href="contact.html" class="btn btn-forest">Begin the Inquiry</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div><p class="footer-logo-name">Venue Oaón</p><p class="footer-logo-sub">Modern Events</p><p class="footer-tagline">An intimate event space in Montana, Pretoria for small, considered gatherings of 20–40 people.</p></div>
+        <div><span class="footer-col-label">Navigate</span><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="packages.html">Packages</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div><span class="footer-col-label">Find Us</span><ul class="footer-links"><li><a href="https://maps.google.com" target="_blank" rel="noopener noreferrer">Montana, Pretoria<br />Gauteng, South Africa</a></li></ul><span class="footer-col-label" style="margin-top:2rem;">Events Partner</span><ul class="footer-links"><li><a href="#" target="_blank" rel="noopener noreferrer">Oaón Events →</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><p class="footer-copy">© 2025 Venue Oaón. All rights reserved.</p><p class="footer-partner">Décor & events by <a href="#" target="_blank" rel="noopener noreferrer">Oaón Events</a></p></div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/27000000000?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20Venue%20Oa%C3%B3n" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+  <script src="shared.js"></script>
+</body>
+</html>
