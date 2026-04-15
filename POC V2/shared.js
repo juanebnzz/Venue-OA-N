@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ── ACTIVE NAV LINK ──────────────────────────────────────────
+  // Highlights the link matching the current page filename
   const currentPage = location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(link => {
     const href = link.getAttribute('href');
@@ -23,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ── MOBILE HAMBURGER ─────────────────────────────────────────
-  // FIX 4: menu now animates via max-height in CSS — JS just toggles .open
   const hbg = document.getElementById('hbg');
   const mob = document.getElementById('mob');
   if (hbg && mob) {
@@ -53,22 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
-  // ── LIGHTBOX CLOSE ANIMATION (FIX 5) ─────────────────────────
-  // Exposes a global closeLightbox helper with a fade-out transition
-  // so gallery.html can call it without duplicating logic
-  window.closeLightboxAnimated = function(lb) {
-    if (!lb) return;
-    lb.style.transition = 'opacity 0.25s ease';
-    lb.style.opacity = '0';
-    setTimeout(() => {
-      lb.classList.remove('open');
-      lb.style.opacity = '';
-      lb.style.transition = '';
-      document.body.style.overflow = '';
-    }, 250);
-  };
-
   // ── FORM PLACEHOLDER HANDLER ─────────────────────────────────
+  // Replace this with Formspree / Netlify Forms before going live
   const forms = document.querySelectorAll('form[data-contact]');
   forms.forEach(form => {
     form.addEventListener('submit', e => {

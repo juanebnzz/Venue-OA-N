@@ -10,21 +10,16 @@
   <style>
     /* ── GALLERY PAGE ────────────────────────────────────────── */
 
-    /* Filter tabs — FIX 8: horizontal scroll on mobile instead of wrapping */
+    /* Filter tabs */
     .filter-bar {
-      display: flex; flex-wrap: nowrap; gap: 0.5rem;
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
       margin-bottom: clamp(2.5rem, 5vw, 4rem);
-      overflow-x: auto; padding-bottom: 4px;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
     }
-    .filter-bar::-webkit-scrollbar { display: none; }
     .filter-btn {
       font-family: var(--fb); font-size: var(--xs); letter-spacing: 0.16em;
       text-transform: uppercase; padding: 10px 20px; border-radius: 2px;
       border: 0.5px solid var(--divider); background: transparent;
-      color: var(--stone-text); cursor: pointer; transition: all 0.2s; min-height: 40px;
-      white-space: nowrap; flex-shrink: 0;
+      color: var(--stone); cursor: pointer; transition: all 0.2s; min-height: 40px;
     }
     .filter-btn:hover { border-color: var(--stone); color: var(--charcoal); }
     .filter-btn.active { background: var(--charcoal); color: var(--white); border-color: var(--charcoal); }
@@ -156,7 +151,7 @@
 
   <!-- PAGE HERO -->
   <div class="page-hero" style="min-height:36vh;">
-    <div class="page-hero-bg" style="background: linear-gradient(155deg, #F0ECE7 0%, #DDD8D0 50%, #D0C9C0 100%);" aria-hidden="true"></div>
+    <div class="page-hero-bg" aria-hidden="true"></div>
     <div class="page-hero-content">
       <div class="page-hero-eyebrow"><span class="label">The Venue</span></div>
       <h1>See the space<br />come to life.</h1>
@@ -392,13 +387,13 @@
       item.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') openLightbox(parseInt(item.dataset.index)); });
     });
 
-    document.getElementById('lb-close').addEventListener('click', () => window.closeLightboxAnimated(lb));
-    lb.addEventListener('click', e => { if (e.target === lb) window.closeLightboxAnimated(lb); });
+    document.getElementById('lb-close').addEventListener('click', closeLightbox);
+    lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
     document.getElementById('lb-prev').addEventListener('click', () => openLightbox((currentIdx - 1 + items.length) % items.length));
     document.getElementById('lb-next').addEventListener('click', () => openLightbox((currentIdx + 1) % items.length));
     document.addEventListener('keydown', e => {
       if (!lb.classList.contains('open')) return;
-      if (e.key === 'Escape') window.closeLightboxAnimated(lb);
+      if (e.key === 'Escape') closeLightbox();
       if (e.key === 'ArrowLeft')  openLightbox((currentIdx - 1 + items.length) % items.length);
       if (e.key === 'ArrowRight') openLightbox((currentIdx + 1) % items.length);
     });

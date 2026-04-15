@@ -12,7 +12,7 @@
   <style>
     /* ── HOME-SPECIFIC ───────────────────────────────────────── */
 
-    /* HERO — Fix 3: reduced bottom padding on mobile so CTA stays visible */
+    /* HERO */
     .hero {
       position: relative; min-height: 100vh;
       display: flex; flex-direction: column; justify-content: flex-end;
@@ -21,13 +21,6 @@
     .hero-bg {
       position: absolute; inset: 0;
       background: linear-gradient(155deg, #EAE3DA 0%, #D5CCBF 45%, #C4BAB0 100%);
-    }
-    /* FIX 7: grain overlay on hero for warmth and tactility */
-    .hero-bg::before {
-      content: ''; position: absolute; inset: 0; z-index: 1;
-      pointer-events: none; opacity: 0.028;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'/%3E%3C/svg%3E");
-      background-size: 180px 180px;
     }
     /* Add real photo: <img src="images/hero.webp" alt="..." style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" /> */
     .hero-bg::after {
@@ -45,13 +38,12 @@
     }
     .hero-content {
       position: relative; z-index: 2;
-      /* FIX 3: tighter bottom padding on mobile keeps CTA above the fold */
-      padding: 0 var(--g) clamp(2.5rem, 6vw, 6.5rem);
+      padding: 0 var(--g) clamp(4rem, 8vw, 6.5rem);
       max-width: var(--max); width: 100%;
     }
     .hero-eyebrow {
       display: flex; align-items: center; gap: 14px;
-      margin-bottom: clamp(1rem, 2.5vw, 2rem);
+      margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
     }
     .hero-eyebrow::before {
       content: ''; display: block; width: 32px; height: 0.5px; background: var(--stone);
@@ -59,7 +51,7 @@
     .hero-h1 {
       font-family: var(--fh); font-size: var(--h1);
       font-weight: 400; letter-spacing: 0.01em; line-height: 1.0;
-      color: var(--charcoal); margin-bottom: clamp(1.5rem, 3vw, 3rem);
+      color: var(--charcoal); margin-bottom: clamp(2rem, 4vw, 3.5rem);
       max-width: 16ch;
     }
     /* Staggered load animations for hero text */
@@ -72,31 +64,30 @@
     }
     .hero-bottom {
       display: flex; flex-wrap: wrap;
-      align-items: flex-end; justify-content: space-between; gap: 1.5rem;
+      align-items: flex-end; justify-content: space-between; gap: 2rem;
     }
-    /* FIX 1: stone-text for readable body text in hero */
-    .hero-sub { font-size: var(--body); color: var(--stone-text); line-height: 1.75; max-width: 340px; }
-    /* FIX 2: more gap between primary and ghost CTA to signal hierarchy */
-    .hero-actions { display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center; }
+    .hero-sub { font-size: var(--body); color: var(--stone); line-height: 1.75; max-width: 340px; }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
 
-    /* STATS STRIP — Fix 8: force single row at mid-widths */
-    .stats { background: var(--charcoal); padding: 2rem var(--g); }
+    /* STATS STRIP */
+    .stats {
+      background: var(--charcoal); padding: 2rem var(--g);
+    }
     .stats-inner {
       max-width: var(--max); margin: 0 auto;
-      display: grid;
-      /* FIX 8: explicit 4-column grid — no awkward 2x2 wrap */
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
+      display: flex; flex-wrap: wrap; gap: 0;
+      justify-content: space-between;
     }
     .stat {
       display: flex; flex-direction: column; gap: 4px;
-      padding: 0.75rem 1.5rem 0.75rem 0;
+      padding: 0.75rem 2rem 0.75rem 0;
       border-right: 0.5px solid rgba(255,255,255,0.1);
+      flex: 1; min-width: 120px;
     }
     .stat:first-child { padding-left: 0; }
     .stat:last-child  { border-right: none; padding-right: 0; }
     .stat-val {
-      font-family: var(--fh); font-size: clamp(1rem, 3vw, 2rem);
+      font-family: var(--fh); font-size: clamp(1.25rem, 3vw, 2rem);
       letter-spacing: 0.02em; color: var(--white); line-height: 1;
     }
     .stat-key {
@@ -115,8 +106,7 @@
       font-weight: 400; letter-spacing: 0.02em; line-height: 1.5;
       color: var(--charcoal);
     }
-    /* FIX 1: stone-text */
-    .intro-sub { font-size: var(--body); color: var(--stone-text); line-height: 1.8; margin-top: 1.25rem; }
+    .intro-sub { font-size: var(--body); color: var(--stone); line-height: 1.8; margin-top: 1.25rem; }
 
     .pillars { display: flex; flex-direction: column; }
     .pillar {
@@ -124,10 +114,9 @@
       display: flex; gap: 1.25rem; align-items: flex-start;
     }
     .pillar:first-child { border-top: 0.5px solid var(--divider); }
-    /* FIX 1: stone-text on pillar text */
-    .pillar-num { font-size: var(--xs); letter-spacing: 0.1em; color: var(--stone-text); padding-top: 2px; flex-shrink: 0; }
+    .pillar-num { font-size: var(--xs); letter-spacing: 0.1em; color: var(--stone); padding-top: 2px; flex-shrink: 0; }
     .pillar-title { font-family: var(--fh); font-size: 0.9375rem; letter-spacing: 0.04em; color: var(--charcoal); display: block; margin-bottom: 4px; }
-    .pillar-body  { font-size: var(--sm); color: var(--stone-text); line-height: 1.65; }
+    .pillar-body  { font-size: var(--sm); color: var(--stone); line-height: 1.65; }
 
     /* SUITES */
     .suites-grid {
@@ -140,9 +129,6 @@
       background: var(--white); border-radius: 10px;
       overflow: hidden; display: flex; flex-direction: column;
       border: 0.5px solid var(--divider);
-      will-change: transform;
-      /* Fix 5: prevent sub-pixel text during compositing layer */
-      -webkit-font-smoothing: antialiased;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .suite-card:hover {
@@ -160,10 +146,10 @@
     .suite-body { padding: 1.75rem; flex: 1; display: flex; flex-direction: column; gap: 1rem; }
     .suite-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
     .suite-name { font-family: var(--fh); font-size: var(--h3); font-weight: 400; letter-spacing: 0.02em; }
-    .suite-desc { font-size: var(--sm); color: var(--stone-text); line-height: 1.65; flex: 1; }
+    .suite-desc { font-size: var(--sm); color: var(--stone); line-height: 1.65; flex: 1; }
     .suite-meta { border-top: 0.5px solid var(--divider); padding-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
     .suite-row { display: flex; justify-content: space-between; align-items: center; }
-    .suite-row-label { font-size: var(--xs); letter-spacing: 0.14em; text-transform: uppercase; color: var(--stone-text); }
+    .suite-row-label { font-size: var(--xs); letter-spacing: 0.14em; text-transform: uppercase; color: var(--stone); }
     .suite-row-val { font-family: var(--fh); font-size: 0.875rem; letter-spacing: 0.04em; }
 
     /* PACKAGES PREVIEW */
@@ -186,12 +172,12 @@
     .pkg-peek-tag { font-size: var(--xs); letter-spacing: 0.14em; text-transform: uppercase; background: rgba(255,255,255,0.15); color: white; padding: 4px 10px; border-radius: 2px; align-self: flex-start; }
     .pkg-peek-name { font-family: var(--fh); font-size: 1.0625rem; letter-spacing: 0.04em; }
     .pkg-peek--featured .pkg-peek-name { color: white; }
-    .pkg-peek-enquire { font-size: var(--sm); color: var(--stone-text); }
+    .pkg-peek-enquire { font-size: var(--sm); color: var(--stone); }
     .pkg-peek--featured .pkg-peek-enquire { color: rgba(255,255,255,0.5); }
     .pkg-peek-divider { border: none; border-top: 0.5px solid var(--divider); }
     .pkg-peek--featured .pkg-peek-divider { border-color: rgba(255,255,255,0.15); }
     .pkg-peek ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
-    .pkg-peek li { font-size: var(--sm); color: var(--stone-text); display: flex; gap: 0.5rem; }
+    .pkg-peek li { font-size: var(--sm); color: var(--stone); display: flex; gap: 0.5rem; }
     .pkg-peek--featured li { color: rgba(255,255,255,0.7); }
     .pkg-peek li::before { content: '–'; color: var(--divider); flex-shrink: 0; }
     .pkg-peek--featured li::before { color: rgba(255,255,255,0.25); }
@@ -212,8 +198,7 @@
     .detail-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.05); }
     .detail-icon { color: var(--forest); width: 28px; height: 28px; }
     .detail-title { font-family: var(--fh); font-size: 1rem; letter-spacing: 0.04em; }
-    /* Fix 1: stone-text on detail desc */
-    .detail-desc { font-size: var(--sm); color: var(--stone-text); line-height: 1.65; }
+    .detail-desc { font-size: var(--sm); color: var(--stone); line-height: 1.65; }
     .time-slots { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.25rem; }
     .time-slot {
       font-size: var(--xs); letter-spacing: 0.12em; text-transform: uppercase;
@@ -221,10 +206,10 @@
       background: var(--linen); border: 0.5px solid var(--divider); color: var(--charcoal);
     }
 
-    /* INQUIRY STRIP — Fix 2: expanded padding for emotional weight */
+    /* INQUIRY STRIP */
     .inquiry-strip {
       background: var(--charcoal);
-      padding: clamp(5rem, 10vw, 9rem) 0;
+      padding: clamp(4rem, 8vw, 7rem) 0;
     }
     .inquiry-strip-inner {
       max-width: var(--max); margin: 0 auto; padding: 0 var(--g);
@@ -242,20 +227,6 @@
     .inquiry-strip select option { background: var(--charcoal); }
     .inquiry-note { font-size: var(--sm); color: var(--stone); margin-top: 1.25rem; }
     .inquiry-note a { color: rgba(255,255,255,0.45); text-decoration: underline; text-underline-offset: 3px; }
-
-    /* Fix 3: stats strip — collapse to 2-col on very narrow screens */
-    @media (max-width: 480px) {
-      .stats-inner { grid-template-columns: repeat(2, 1fr); }
-      .stat { padding: 0.75rem 1rem 0.75rem 0; }
-      .stat:nth-child(2) { border-right: none; }
-      .stat:nth-child(3) { padding-left: 0; }
-    }
-
-    /* Fix 4: hero primary CTA full-width on mobile to dominate ghost button */
-    @media (max-width: 480px) {
-      .hero-actions { flex-direction: column; align-items: stretch; }
-      .hero-actions .btn-forest { text-align: center; justify-content: center; }
-    }
   </style>
 </head>
 <body>
