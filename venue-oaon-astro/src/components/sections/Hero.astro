@@ -1,0 +1,107 @@
+---
+import Button from '../ui/Button.astro';
+---
+
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <span class="hero-tag" aria-hidden="true">Montana · Pretoria</span>
+
+  <div class="hero-content wrap">
+    <div class="hero-eyebrow">
+      <span class="label" style="color:white;">Intimate event space</span>
+    </div>
+    <h1 class="hero-h1">A space made<br />for your<br />moment.</h1>
+    <div class="hero-bottom">
+      <p class="hero-sub">
+        Three suites for gatherings of 20–40 people.
+        Baby showers, kitchen teas, bridal showers, birthdays.
+      </p>
+      <div class="hero-actions">
+        <Button href="/contact" variant="accent">Begin the Inquiry</Button>
+        <Button href="#suites"  variant="ghost">Explore the Suites</Button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+    padding-top: var(--nav-h);
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/hero_bg_1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+    transform: scale(1.05);
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,rgba(0,0,0,0.15) 0%,rgba(0,0,0,0.35) 50%,rgba(0,0,0,0.55) 100%);
+  }
+  .hero-tag {
+    position: absolute;
+    top: 88px;
+    right: var(--g);
+    z-index: 2;
+    writing-mode: vertical-rl;
+    font-size: var(--text-xs);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    opacity: 0.45;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding-bottom: clamp(4rem,8vw,6.5rem);
+  }
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: clamp(1.5rem,3vw,2.5rem);
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 0.5px;
+    background: #8C8578;
+  }
+  .hero-h1 {
+    font-family: 'Tenor Sans', serif;
+    font-size: var(--text-h1);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 1.0;
+    color: white;
+    margin-bottom: clamp(2rem,4vw,3.5rem);
+    max-width: 16ch;
+  }
+  .hero-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  .hero-sub {
+    font-size: var(--text-body);
+    color: rgba(255,255,255,0.8);
+    line-height: 1.75;
+    max-width: 340px;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+</style>

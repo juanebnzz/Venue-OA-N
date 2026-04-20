@@ -1,0 +1,21 @@
+/* ── VENUE OAÓN — Design tokens ──────────────────────────────────
+   Fluid type and custom spacing that Tailwind can't express natively.
+   Import this in BaseLayout.astro only — all tokens cascade from there.
+   ─────────────────────────────────────────────────────────────── */
+
+:root {
+  /* Fluid type scale (clamp) */
+  --text-h1:   clamp(3rem, 7vw, 5.5rem);
+  --text-h2:   clamp(2rem, 4vw, 3rem);
+  --text-h3:   clamp(1.25rem, 2.5vw, 1.625rem);
+  --text-body: clamp(0.875rem, 1.4vw, 1rem);
+  --text-sm:   0.8125rem;
+  --text-xs:   0.625rem;
+
+  /* Fluid gutters & max-width */
+  --g:   clamp(1.5rem, 5vw, 4.5rem);
+  --max: 1240px;
+
+  /* Nav */
+  --nav-h: 64px;
+}

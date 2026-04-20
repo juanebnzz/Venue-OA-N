@@ -1,0 +1,260 @@
+---
+import BaseLayout from '../components/layout/BaseLayout.astro';
+import PageHero from '../components/sections/PageHero.astro';
+import Button from '../components/ui/Button.astro';
+
+const items = [
+  { suite:'myrrh',  idx:0,  name:'Myrrh Suite',         type:'Indoor · 30–40 pax',    bg:'linear-gradient(135deg,#EBE4DC,#CFC5B5)', label:'Myrrh Suite · Add photo',        ar:'4/5'  },
+  { suite:'olive',  idx:1,  name:'Olive Suite',          type:'In/Out · 20–30 pax',    bg:'linear-gradient(135deg,#E5EBE0,#CDD6C5)', label:'Olive Suite · Add photo',        ar:'3/4'  },
+  { suite:'garden', idx:2,  name:'Garden Suite',         type:'Outdoor · 30–40 pax',   bg:'linear-gradient(135deg,#E0EBE6,#C5D6CF)', label:'Garden Suite · Add photo',       ar:'1/1'  },
+  { suite:'events', idx:3,  name:'Signature Package',    type:'Events & Décor',        bg:'linear-gradient(135deg,#EAE3DA,#D0C8BC)', label:'Event setup · Add photo',        ar:'4/3'  },
+  { suite:'myrrh',  idx:4,  name:'Myrrh Suite',          type:'Indoor · Detail',       bg:'linear-gradient(135deg,#E8E2D8,#D5CCBF)', label:'Myrrh Suite · Add photo',        ar:'3/4'  },
+  { suite:'events', idx:5,  name:'Balloon Installation', type:'Events & Décor',        bg:'linear-gradient(135deg,#E2EAE6,#C8D5CF)', label:'Balloon arch · Add photo',       ar:'5/4'  },
+  { suite:'garden', idx:6,  name:'Garden Suite',         type:'Outdoor · Detail',      bg:'linear-gradient(135deg,#EDE6DC,#D8CEBD)', label:'Garden Suite · Add photo',       ar:'4/5'  },
+  { suite:'olive',  idx:7,  name:'Olive Suite — Patio',  type:'In/Out · Detail',       bg:'linear-gradient(135deg,#E0EBE2,#C5D6C8)', label:'Olive Suite · Patio · Add photo',ar:'3/2'  },
+  { suite:'events', idx:8,  name:'Table Styling',        type:'Events & Décor',        bg:'linear-gradient(135deg,#E8E2D8,#CFC8BA)', label:'Table styling · Add photo',      ar:'1/1'  },
+  { suite:'myrrh',  idx:9,  name:'Myrrh Suite',          type:'Indoor · Wide angle',   bg:'linear-gradient(135deg,#EAE3DA,#D3CABC)', label:'Myrrh Suite · Wide · Add photo', ar:'4/5'  },
+  { suite:'garden', idx:10, name:'Garden Suite',         type:'Outdoor · Wide angle',  bg:'linear-gradient(135deg,#E5EBE0,#CDD6C5)', label:'Garden Suite · Wide · Add photo',ar:'3/4'  },
+  { suite:'events', idx:11, name:'Floral Centrepiece',   type:'Events & Décor',        bg:'linear-gradient(135deg,#E0EBE6,#C8D5CF)', label:'Floral styling · Add photo',     ar:'5/4'  },
+];
+---
+
+<BaseLayout
+  title="Gallery — Venue Oaón"
+  description="Photos of Venue Oaón's three suites — the Myrrh, Olive, and Garden Suite — in Montana, Pretoria."
+>
+  <PageHero
+    eyebrow="The Venue"
+    title="See the space<br />come to life."
+    minHeight="36vh"
+  />
+
+  <section class="section">
+    <div class="wrap">
+      <div class="reveal" style="margin-bottom:2rem;max-width:560px;">
+        <p class="section-body">Photos will be updated as the venue grows. Book a site visit to experience the suites in person — nothing replaces standing in the space.</p>
+      </div>
+
+      <!-- Filter tabs -->
+      <div class="filter-bar reveal" role="group" aria-label="Filter gallery by suite">
+        <button class="filter-btn active" data-filter="all">All Spaces</button>
+        <button class="filter-btn" data-filter="myrrh">Myrrh Suite</button>
+        <button class="filter-btn" data-filter="olive">Olive Suite</button>
+        <button class="filter-btn" data-filter="garden">Garden Suite</button>
+        <button class="filter-btn" data-filter="events">Events & Décor</button>
+      </div>
+
+      <!-- Masonry grid -->
+      <div class="gallery-grid" id="gallery">
+        {items.map(({ suite, idx, name, type, bg, label, ar }, i) => (
+          <div
+            class={`gallery-item reveal${i%3===1?' d1':i%3===2?' d2':''}`}
+            data-suite={suite}
+            data-index={idx}
+            role="button"
+            tabindex="0"
+            aria-label={`${name} — click to enlarge`}
+          >
+            <div class="gallery-item-inner">
+              <div
+                class="gallery-item-bg"
+                style={`background:${bg};aspect-ratio:${ar};position:relative;`}
+              >
+                <span class="ph-label">{label}</span>
+              </div>
+              <div class="gallery-item-overlay">
+                <div class="gallery-item-meta">
+                  <span class="gallery-item-name">{name}</span>
+                  <span class="gallery-item-type">{type}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="gallery-empty" id="gallery-empty">
+        <p>Photos for this suite are coming soon.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-label="Photo lightbox" aria-modal="true">
+    <button class="lightbox-close" id="lb-close" aria-label="Close lightbox">✕</button>
+    <div class="lightbox-inner">
+      <div id="lb-ph" style="width:100%;border-radius:6px;height:60vh;"></div>
+      <div class="lightbox-caption">
+        <div>
+          <span class="lightbox-name" id="lb-name"></span>
+          <span class="lightbox-type" id="lb-type"></span>
+        </div>
+        <div class="lightbox-nav">
+          <button id="lb-prev" aria-label="Previous photo">←</button>
+          <button id="lb-next" aria-label="Next photo">→</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section class="section section--linen" style="text-align:center;">
+    <div class="wrap reveal">
+      <span class="label" style="display:block;margin-bottom:1rem;">Like what you see?</span>
+      <h2 class="section-title" style="margin-bottom:1.25rem;">Come experience it in person.</h2>
+      <p class="section-body" style="max-width:460px;margin:0 auto 2rem;">Photos only tell part of the story. Book a site visit and we'll walk you through every suite.</p>
+      <Button href="/contact" variant="accent">Book a Site Visit</Button>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .filter-bar { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: clamp(2.5rem,5vw,4rem); }
+  .filter-btn {
+    font-family: Inter, sans-serif; font-size: var(--text-xs); letter-spacing: 0.16em;
+    text-transform: uppercase; padding: 10px 20px; border-radius: 2px;
+    border: 0.5px solid #E0DDD8; background: transparent; color: #8C8578;
+    cursor: pointer; transition: all 0.2s; min-height: 40px;
+  }
+  .filter-btn:hover { border-color: #8C8578; color: #1A1A1A; }
+  .filter-btn.active { background: #1A1A1A; color: #FFFFFF; border-color: #1A1A1A; }
+
+  .gallery-grid { columns: 1; column-gap: 1rem; }
+  @media (min-width: 640px)  { .gallery-grid { columns: 2; } }
+  @media (min-width: 1024px) { .gallery-grid { columns: 3; } }
+
+  .gallery-item {
+    break-inside: avoid; margin-bottom: 1rem;
+    position: relative; border-radius: 8px; overflow: hidden;
+    cursor: pointer; display: block; transition: opacity 0.3s ease;
+  }
+  .gallery-item.hidden { display: none; }
+  .gallery-item-inner  { position: relative; overflow: hidden; }
+  .gallery-item-bg     { width: 100%; display: block; transition: transform 0.5s ease; }
+  .gallery-item:hover .gallery-item-bg { transform: scale(1.04); }
+
+  .ph-label {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    font-size: var(--text-xs); letter-spacing: 0.14em; text-transform: uppercase; color: #8C8578; opacity: 0.35;
+  }
+
+  .gallery-item-overlay {
+    position: absolute; inset: 0; background: rgba(26,26,26,0);
+    display: flex; align-items: flex-end; padding: 1.5rem; transition: background 0.3s ease;
+  }
+  .gallery-item:hover .gallery-item-overlay { background: rgba(26,26,26,0.35); }
+  .gallery-item-meta   { opacity: 0; transform: translateY(8px); transition: all 0.3s ease; }
+  .gallery-item:hover .gallery-item-meta { opacity: 1; transform: translateY(0); }
+  .gallery-item-name   { font-family: 'Tenor Sans', serif; font-size: 0.9375rem; letter-spacing: 0.04em; color: white; display: block; }
+  .gallery-item-type   { font-size: var(--text-xs); letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.65); }
+
+  .gallery-empty { display: none; text-align: center; padding: 5rem 0; }
+  .gallery-empty.show { display: block; }
+  .gallery-empty p { font-size: var(--text-body); color: #8C8578; }
+
+  .lightbox {
+    position: fixed; inset: 0; z-index: 500;
+    background: rgba(26,26,26,0.95); backdrop-filter: blur(8px);
+    display: none; align-items: center; justify-content: center; padding: 2rem;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox-inner { max-width: 900px; width: 100%; position: relative; animation: lb-in 0.3s ease both; }
+  .lightbox-close {
+    position: fixed; top: 1.5rem; right: 1.5rem;
+    background: rgba(255,255,255,0.1); border: none; cursor: pointer;
+    width: 44px; height: 44px; border-radius: 50%; display: flex;
+    align-items: center; justify-content: center; color: white;
+    transition: background 0.2s; font-size: 1.25rem;
+  }
+  .lightbox-close:hover { background: rgba(255,255,255,0.2); }
+  .lightbox-caption { margin-top: 1rem; display: flex; justify-content: space-between; align-items: center; }
+  .lightbox-name { font-family: 'Tenor Sans', serif; font-size: 1rem; letter-spacing: 0.04em; color: white; }
+  .lightbox-type { font-size: var(--text-xs); letter-spacing: 0.14em; text-transform: uppercase; color: #8C8578; }
+  .lightbox-nav  { display: flex; gap: 0.5rem; }
+  .lightbox-nav button {
+    background: rgba(255,255,255,0.1); border: none; cursor: pointer;
+    width: 40px; height: 40px; border-radius: 50%; display: flex;
+    align-items: center; justify-content: center; color: white; transition: background 0.2s;
+  }
+  .lightbox-nav button:hover { background: rgba(255,255,255,0.2); }
+
+  .section-title { font-family: 'Tenor Sans', serif; font-size: var(--text-h2); font-weight: 400; letter-spacing: 0.02em; line-height: 1.1; color: #1A1A1A; }
+  .section-body  { font-size: var(--text-body); color: #8C8578; line-height: 1.75; }
+</style>
+
+<script>
+  const items = [
+    { name:'Myrrh Suite',          type:'Indoor · 30–40 pax',   bg:'linear-gradient(135deg,#EBE4DC,#CFC5B5)' },
+    { name:'Olive Suite',          type:'In/Out · 20–30 pax',   bg:'linear-gradient(135deg,#E5EBE0,#CDD6C5)' },
+    { name:'Garden Suite',         type:'Outdoor · 30–40 pax',  bg:'linear-gradient(135deg,#E0EBE6,#C5D6CF)' },
+    { name:'Signature Package',    type:'Events & Décor',       bg:'linear-gradient(135deg,#EAE3DA,#D0C8BC)' },
+    { name:'Myrrh Suite',          type:'Indoor · Detail',      bg:'linear-gradient(135deg,#E8E2D8,#D5CCBF)' },
+    { name:'Balloon Installation', type:'Events & Décor',       bg:'linear-gradient(135deg,#E2EAE6,#C8D5CF)' },
+    { name:'Garden Suite',         type:'Outdoor · Detail',     bg:'linear-gradient(135deg,#EDE6DC,#D8CEBD)' },
+    { name:'Olive Suite — Patio',  type:'In/Out · Detail',      bg:'linear-gradient(135deg,#E0EBE2,#C5D6C8)' },
+    { name:'Table Styling',        type:'Events & Décor',       bg:'linear-gradient(135deg,#E8E2D8,#CFC8BA)' },
+    { name:'Myrrh Suite',          type:'Indoor · Wide angle',  bg:'linear-gradient(135deg,#EAE3DA,#D3CABC)' },
+    { name:'Garden Suite',         type:'Outdoor · Wide angle', bg:'linear-gradient(135deg,#E5EBE0,#CDD6C5)' },
+    { name:'Floral Centrepiece',   type:'Events & Décor',       bg:'linear-gradient(135deg,#E0EBE6,#C8D5CF)' },
+  ];
+
+  // Filter
+  const filterBtns   = document.querySelectorAll('.filter-btn');
+  const galleryItems = document.querySelectorAll('.gallery-item') as NodeListOf<HTMLElement>;
+  const emptyState   = document.getElementById('gallery-empty')!;
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = (btn as HTMLElement).dataset.filter!;
+      let visible = 0;
+      galleryItems.forEach(item => {
+        const matches = filter === 'all' || item.dataset.suite === filter;
+        item.classList.toggle('hidden', !matches);
+        if (matches) visible++;
+      });
+      emptyState.classList.toggle('show', visible === 0);
+    });
+  });
+
+  // Lightbox
+  let currentIdx = 0;
+  const lb     = document.getElementById('lightbox')!;
+  const lbPh   = document.getElementById('lb-ph')!;
+  const lbName = document.getElementById('lb-name')!;
+  const lbType = document.getElementById('lb-type')!;
+
+  function openLightbox(idx: number) {
+    currentIdx = idx;
+    const d = items[idx];
+    lbPh.style.background = d.bg;
+    lbName.textContent = d.name;
+    lbType.textContent = d.type;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  galleryItems.forEach(item => {
+    item.addEventListener('click', () => openLightbox(parseInt(item.dataset.index!)));
+    item.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.key === 'Enter' || e.key === ' ') openLightbox(parseInt(item.dataset.index!));
+    });
+  });
+
+  document.getElementById('lb-close')!.addEventListener('click', closeLightbox);
+  lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+  document.getElementById('lb-prev')!.addEventListener('click', () => openLightbox((currentIdx - 1 + items.length) % items.length));
+  document.getElementById('lb-next')!.addEventListener('click', () => openLightbox((currentIdx + 1) % items.length));
+  document.addEventListener('keydown', (e: KeyboardEvent) => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape')     closeLightbox();
+    if (e.key === 'ArrowLeft')  openLightbox((currentIdx - 1 + items.length) % items.length);
+    if (e.key === 'ArrowRight') openLightbox((currentIdx + 1) % items.length);
+  });
+</script>

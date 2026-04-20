@@ -1,0 +1,146 @@
+---
+// TODO: Replace 27000000000 with the real WhatsApp number before go-live
+const WA_NUMBER = '27000000000';
+---
+
+<div class="inquiry-strip">
+  <div class="inquiry-strip-inner wrap">
+
+    <div class="reveal">
+      <span class="inquiry-strip-label">Begin the Inquiry</span>
+      <h2 class="inquiry-strip-heading">Tell us about your moment.</h2>
+      <p class="inquiry-strip-sub">
+        Fill in what you know and we'll be in touch to talk through the rest.
+        This is the beginning of a conversation, not a booking form.
+      </p>
+      <a href="/contact" class="btn-ol-light">Go to Full Enquiry Form</a>
+    </div>
+
+    <form
+      name="quick-inquiry"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      class="reveal d2"
+    >
+      <input type="hidden" name="form-name" value="quick-inquiry" />
+      <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+      <div class="form-grid">
+        <div class="fg">
+          <label for="h-name">Your Name</label>
+          <input type="text" id="h-name" name="name" placeholder="Jane Doe" autocomplete="name" required />
+        </div>
+        <div class="fg">
+          <label for="h-email">Email Address</label>
+          <input type="email" id="h-email" name="email" placeholder="jane@email.com" autocomplete="email" required />
+        </div>
+        <div class="fg">
+          <label for="h-etype">Event Type</label>
+          <select id="h-etype" name="etype">
+            <option value="" disabled selected>Select type</option>
+            <option>Baby Shower</option>
+            <option>Kitchen Tea</option>
+            <option>Bridal Shower</option>
+            <option>Birthday</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label for="h-date">Preferred Date</label>
+          <input type="date" id="h-date" name="date" />
+        </div>
+        <div class="form-submit">
+          <button type="submit" class="btn-submit">Send Inquiry</button>
+        </div>
+      </div>
+      <p class="inquiry-note">
+        We aim to respond within 24 hours.
+        <a href={`https://wa.me/${WA_NUMBER}`} target="_blank" rel="noopener noreferrer">Message on WhatsApp</a>.
+      </p>
+    </form>
+
+  </div>
+</div>
+
+<style>
+  .inquiry-strip { background: #1A1A1A; padding: clamp(4rem,8vw,7rem) 0; }
+  .inquiry-strip-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  @media (min-width: 900px) { .inquiry-strip-inner { grid-template-columns: 1fr 1.5fr; gap: 5rem; align-items: start; } }
+
+  .inquiry-strip-label {
+    font-size: var(--text-xs);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #8C8578;
+    display: block;
+    margin-bottom: 1rem;
+  }
+  .inquiry-strip-heading {
+    font-family: 'Tenor Sans', serif;
+    font-size: clamp(1.75rem,4vw,2.75rem);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+    color: #FFFFFF;
+    margin-bottom: 1.25rem;
+  }
+  .inquiry-strip-sub { font-size: var(--text-body); color: #8C8578; line-height: 1.75; }
+
+  .btn-ol-light {
+    display: inline-flex;
+    align-items: center;
+    font-family: 'Tenor Sans', serif;
+    font-size: var(--text-xs);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    border-radius: 2px;
+    border: 0.5px solid rgba(255,255,255,0.25);
+    color: white;
+    margin-top: 2rem;
+    min-height: 48px;
+    transition: background 0.2s;
+  }
+  .btn-ol-light:hover { background: rgba(255,255,255,0.1); }
+
+  /* Dark-mode form overrides */
+  .inquiry-strip input,
+  .inquiry-strip select,
+  .inquiry-strip textarea {
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(255,255,255,0.12);
+    color: #FFFFFF;
+  }
+  .inquiry-strip input::placeholder,
+  .inquiry-strip textarea::placeholder { color: rgba(255,255,255,0.3); }
+  .inquiry-strip input:focus,
+  .inquiry-strip select:focus,
+  .inquiry-strip textarea:focus { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.4); }
+  .inquiry-strip label { color: rgba(255,255,255,0.4); }
+  .inquiry-strip select { color: rgba(255,255,255,0.7); }
+  .inquiry-strip select option { background: #1A1A1A; }
+
+  .btn-submit {
+    font-family: 'Tenor Sans', serif;
+    font-size: var(--text-xs);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    border-radius: 2px;
+    border: none;
+    background: #8B6448;
+    color: #FFFFFF;
+    min-height: 48px;
+    cursor: pointer;
+    transition: background 0.22s ease;
+  }
+  .btn-submit:hover { background: #6E4E38; }
+
+  .inquiry-note { font-size: var(--text-sm); color: #8C8578; margin-top: 1.25rem; }
+  .inquiry-note a { color: rgba(255,255,255,0.45); text-decoration: underline; text-underline-offset: 3px; }
+</style>
