@@ -223,7 +223,7 @@
 
     .intro-sub {
       font-size: var(--body);
-      color: var(--stone);
+      color: var(--stone-text);
       line-height: 1.8;
       margin-top: 1.25rem;
     }
@@ -264,7 +264,7 @@
 
     .pillar-body {
       font-size: var(--sm);
-      color: var(--stone);
+      color: var(--stone-text);
       line-height: 1.65;
     }
 
@@ -294,12 +294,12 @@
       display: flex;
       flex-direction: column;
       border: 0.5px solid var(--divider);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.25s var(--ease-out-strong), box-shadow 0.25s var(--ease-out-strong);
     }
 
     .suite-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 16px 48px rgba(139, 100, 72, 0.1), 0 4px 16px rgba(0, 0, 0, 0.06);
     }
 
     .suite-img {
@@ -355,7 +355,7 @@
 
     .suite-desc {
       font-size: var(--sm);
-      color: var(--stone);
+      color: var(--stone-text);
       line-height: 1.65;
       flex: 1;
     }
@@ -550,7 +550,7 @@
 
     .detail-desc {
       font-size: var(--sm);
-      color: var(--stone);
+      color: var(--stone-text);
       line-height: 1.65;
     }
 
@@ -740,28 +740,28 @@
             space should feel like it was made for them.</p>
           <a href="about.html" class="btn btn-outline" style="margin-top:2rem;">About the Venue</a>
         </div>
-        <div class="pillars reveal d2">
-          <div class="pillar">
+        <div class="pillars">
+          <div class="pillar reveal">
             <span class="pillar-num">01</span>
             <div><span class="pillar-title">Self-Catering Freedom</span>
               <p class="pillar-body">Bring your own food and drinks. No corkage fee. Kitchen access on selected
                 packages.</p>
             </div>
           </div>
-          <div class="pillar">
+          <div class="pillar reveal d1">
             <span class="pillar-num">02</span>
             <div><span class="pillar-title">Décor Partnership</span>
               <p class="pillar-body">Oaón Events handles full décor — balloon arches, florals, backdrops, and table
                 settings.</p>
             </div>
           </div>
-          <div class="pillar">
+          <div class="pillar reveal d2">
             <span class="pillar-num">03</span>
             <div><span class="pillar-title">Secured Parking</span>
               <p class="pillar-body">On-site secured parking for all guests. No street parking stress on the day.</p>
             </div>
           </div>
-          <div class="pillar">
+          <div class="pillar reveal d3">
             <span class="pillar-num">04</span>
             <div><span class="pillar-title">Intimate by Design</span>
               <p class="pillar-body">20–40 guests is a feature, not a limitation. Spacious enough to breathe, small
@@ -901,7 +901,7 @@
         </div>
       </div>
       <div class="pkgs-cta reveal">
-        <p style="font-size:var(--sm);color:var(--stone);margin-bottom:1rem;">All packages offered through Oaón Events ·
+        <p style="font-size:var(--sm);color:var(--stone-text);margin-bottom:1rem;">All packages offered through Oaón Events ·
           Custom scopes always available</p>
         <a href="packages.html" class="btn btn-forest">Explore Packages</a>
       </div>
