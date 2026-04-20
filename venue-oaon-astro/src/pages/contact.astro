@@ -201,14 +201,18 @@ const WA_MSG = encodeURIComponent("Hi, I'd like to enquire about Venue Oaón");
             Fill in what you know — we'll follow up within 24 hours to talk
             through the rest. No commitment, just a conversation.
           </p>
-          <form
-            id="contact-form"
-            method="POST"
-            novalidate
-          >
+          <form id="contact-form" method="POST" novalidate>
             <!-- TODO: Replace YOUR_WEB3FORMS_KEY with key from web3forms.com -->
-            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY" />
-            <input type="hidden" name="subject" value="New Enquiry — Venue Oaón" />
+            <input
+              type="hidden"
+              name="access_key"
+              value="9d93d734-3f0d-438d-bdc0-6b38466d60c1"
+            />
+            <input
+              type="hidden"
+              name="subject"
+              value="New Enquiry — Venue Oaón"
+            />
             <input type="checkbox" name="botcheck" style="display:none" />
 
             <div class="form-grid">
@@ -308,12 +312,29 @@ const WA_MSG = encodeURIComponent("Hi, I'd like to enquire about Venue Oaón");
               > for a faster response.
             </p>
           </form>
-          <div id="contact-success" class="form-feedback form-feedback--success" style="display:none;">
+          <div
+            id="contact-success"
+            class="form-feedback form-feedback--success"
+            style="display:none;"
+          >
             <p class="form-feedback-title">Thank you — we'll be in touch.</p>
-            <p class="form-feedback-body">We aim to respond within 24 hours. We'll follow up with full details for your event.</p>
+            <p class="form-feedback-body">
+              We aim to respond within 24 hours. We'll follow up with full
+              details for your event.
+            </p>
           </div>
-          <div id="contact-error" class="form-feedback form-feedback--error" style="display:none;">
-            <p class="form-feedback-body">Something went wrong. Please try again or <a href={`https://wa.me/${WA_NUMBER}`} target="_blank" rel="noopener noreferrer">message us on WhatsApp</a>.</p>
+          <div
+            id="contact-error"
+            class="form-feedback form-feedback--error"
+            style="display:none;"
+          >
+            <p class="form-feedback-body">
+              Something went wrong. Please try again or <a
+                href={`https://wa.me/${WA_NUMBER}`}
+                target="_blank"
+                rel="noopener noreferrer">message us on WhatsApp</a
+              >.
+            </p>
           </div>
         </div>
       </div>
@@ -644,7 +665,7 @@ const WA_MSG = encodeURIComponent("Hi, I'd like to enquire about Venue Oaón");
     margin-top: 1.5rem;
   }
   .form-feedback--success {
-    background: #EDE5DC;
+    background: #ede5dc;
   }
   .form-feedback--error {
     background: #fff8f5;
@@ -670,26 +691,29 @@ const WA_MSG = encodeURIComponent("Hi, I'd like to enquire about Venue Oaón");
 </style>
 
 <script>
-  const form = document.getElementById('contact-form');
-  const success = document.getElementById('contact-success');
-  const error = document.getElementById('contact-error');
+  const form = document.getElementById("contact-form");
+  const success = document.getElementById("contact-success");
+  const error = document.getElementById("contact-error");
 
   if (form instanceof HTMLFormElement) {
-    form.addEventListener('submit', async (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      if (error) error.style.display = 'none';
+      if (error) error.style.display = "none";
       const data = new FormData(form);
       try {
-        const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
+        const res = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: data,
+        });
         const json = await res.json();
         if (json.success) {
-          form.style.display = 'none';
-          if (success) success.style.display = 'block';
+          form.style.display = "none";
+          if (success) success.style.display = "block";
         } else {
-          if (error) error.style.display = 'block';
+          if (error) error.style.display = "block";
         }
       } catch {
-        if (error) error.style.display = 'block';
+        if (error) error.style.display = "block";
       }
     });
   }
