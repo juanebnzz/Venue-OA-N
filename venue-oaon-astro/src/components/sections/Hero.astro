@@ -1,24 +1,31 @@
 ---
-import Button from '../ui/Button.astro';
+import Button from "../ui/Button.astro";
 ---
 
 <section class="hero">
   <div class="hero-bg" aria-hidden="true"></div>
   <span class="hero-tag" aria-hidden="true">Montana · Pretoria</span>
 
-  <div class="hero-content wrap">
+  <div class="hero-content">
     <div class="hero-eyebrow">
       <span class="label" style="color:white;">Intimate event space</span>
     </div>
-    <h1 class="hero-h1">A space made<br />for your<br />moment.</h1>
+
+    <h1 class="hero-h1">
+      A space made<br />
+      for your<br />
+      moment.
+    </h1>
+
     <div class="hero-bottom">
       <p class="hero-sub">
-        Three suites for gatherings of 20–40 people.
-        Baby showers, kitchen teas, bridal showers, birthdays.
+        Three suites for gatherings of 20–40 people. Baby showers, kitchen teas,
+        bridal showers, birthdays.
       </p>
+
       <div class="hero-actions">
         <Button href="/contact" variant="accent">Begin the Inquiry</Button>
-        <Button href="#suites"  variant="ghost">Explore the Suites</Button>
+        <Button href="#suites" variant="ghost">Explore the Suites</Button>
       </div>
     </div>
   </div>
@@ -28,80 +35,123 @@ import Button from '../ui/Button.astro';
   .hero {
     position: relative;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
     overflow: hidden;
     padding-top: var(--nav-h);
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 10vh;
   }
+
   .hero-bg {
     position: absolute;
     inset: 0;
-    background-image: url('/images/hero_bg_1.jpg');
+    background-image: url("/images/hero_bg_1.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     z-index: 0;
-    transform: scale(1.05);
+    transform: scale(1.03);
   }
+
   .hero-bg::after {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom,rgba(0,0,0,0.15) 0%,rgba(0,0,0,0.35) 50%,rgba(0,0,0,0.55) 100%);
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.12) 0%,
+      rgba(0, 0, 0, 0.28) 45%,
+      rgba(0, 0, 0, 0.48) 100%
+    );
   }
+
   .hero-tag {
     position: absolute;
     top: 88px;
-    right: var(--g);
+    right: clamp(1.5rem, 3vw, 3rem);
     z-index: 2;
     writing-mode: vertical-rl;
     font-size: var(--text-xs);
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.5);
-    opacity: 0.45;
+    color: rgba(255, 255, 255, 0.45);
   }
+
   .hero-content {
     position: relative;
     z-index: 2;
-    padding-bottom: clamp(4rem,8vw,6.5rem);
+    width: 100%;
+    max-width: 680px;
+    padding-left: clamp(2rem, 8vw, 8rem);
   }
+
   .hero-eyebrow {
     display: flex;
     align-items: center;
     gap: 14px;
-    margin-bottom: clamp(1.5rem,3vw,2.5rem);
+    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
   }
+
   .hero-eyebrow::before {
-    content: '';
+    content: "";
     display: block;
     width: 32px;
     height: 0.5px;
-    background: #8C8578;
+    background: #8c8578;
   }
+
   .hero-h1 {
-    font-family: 'Tenor Sans', serif;
-    font-size: var(--text-h1);
+    font-family: "Tenor Sans", serif;
+    font-size: clamp(4rem, 9vw, 7rem);
     font-weight: 400;
+    line-height: 0.95;
     letter-spacing: 0.01em;
-    line-height: 1.0;
     color: white;
-    margin-bottom: clamp(2rem,4vw,3.5rem);
-    max-width: 16ch;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+    max-width: 10ch;
   }
+
   .hero-bottom {
     display: flex;
-    flex-wrap: wrap;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 2rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
   }
+
   .hero-sub {
     font-size: var(--text-body);
-    color: rgba(255,255,255,0.8);
     line-height: 1.75;
-    max-width: 340px;
+    color: rgba(255, 255, 255, 0.82);
+    max-width: 420px;
   }
-  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding-bottom: 6vh;
+    }
+
+    .hero-content {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      max-width: 100%;
+    }
+
+    .hero-h1 {
+      font-size: clamp(3rem, 12vw, 5rem);
+      max-width: 100%;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+      align-items: stretch;
+      width: 100%;
+    }
+  }
 </style>

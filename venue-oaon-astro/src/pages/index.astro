@@ -1,29 +1,30 @@
 ---
-import BaseLayout from '../components/layout/BaseLayout.astro';
-import Hero from '../components/sections/Hero.astro';
-import StatsStrip from '../components/sections/StatsStrip.astro';
-import TheSpace from '../components/sections/TheSpace.astro';
-import SuitesGrid from '../components/sections/SuitesGrid.astro';
-import PackagesGrid from '../components/sections/PackagesGrid.astro';
-import PracticalDetails from '../components/sections/PracticalDetails.astro';
-import InquiryStrip from '../components/sections/InquiryStrip.astro';
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import Hero from "../components/sections/Hero.astro";
+import StatsStrip from "../components/sections/StatsStrip.astro";
+import TheSpace from "../components/sections/TheSpace.astro";
+import SuitesGrid from "../components/sections/SuitesGrid.astro";
+import PackagesGrid from "../components/sections/PackagesGrid.astro";
+import PracticalDetails from "../components/sections/PracticalDetails.astro";
+import InquiryStrip from "../components/sections/InquiryStrip.astro";
 
 const schema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "name": "Venue Oaón",
-  "description": "An intimate event space in Montana, Pretoria for gatherings of 20–40 people.",
-  "url": "https://venueoaon.co.za",
-  "email": "hello@venueoaon.co.za",
-  "address": {
+  name: "Venue Oaón",
+  description:
+    "An intimate event space in Montana, Pretoria for gatherings of 20–40 people.",
+  url: "https://venueoaon.co.za",
+  email: "[EMAIL_ADDRESS]",
+  address: {
     "@type": "PostalAddress",
-    "addressLocality": "Montana",
-    "addressRegion": "Pretoria",
-    "addressCountry": "ZA"
+    addressLocality: "Montana",
+    addressRegion: "Pretoria",
+    addressCountry: "ZA",
   },
-  "openingHours": ["Mo-Su 08:00-19:00"],
-  "priceRange": "$$",
-  "image": "https://venueoaon.co.za/images/hero_bg_1.jpg"
+  openingHours: ["Mo-Su 08:00-19:00"],
+  priceRange: "$$",
+  image: "https://venueoaon.co.za/images/hero_bg_1.jpg",
 };
 ---
 
@@ -31,7 +32,11 @@ const schema = {
   title="Venue Oaón — Intimate Event Space, Montana Pretoria"
   description="An intimate event space in Montana, Pretoria for gatherings of 20–40 people. Baby showers, kitchen teas, bridal showers and birthdays."
 >
-  <script type="application/ld+json" slot="head" set:html={JSON.stringify(schema)} />
+  <script
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify(schema)}
+  />
 
   <Hero />
   <StatsStrip />
