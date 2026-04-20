@@ -25,7 +25,7 @@ import Button from "../ui/Button.astro";
 
       <div class="hero-actions">
         <Button href="/contact" variant="accent">Begin the Inquiry</Button>
-        <Button href="#suites" variant="ghost">Explore the Suites</Button>
+        <a href="#suites" class="hero-ghost-btn">Explore the Suites</a>
       </div>
     </div>
   </div>
@@ -53,16 +53,26 @@ import Button from "../ui/Button.astro";
     transform: scale(1.03);
   }
 
+  /* Dual-axis overlay: left-column gradient for text legibility (WCAG 4.5:1)
+     plus a bottom vignette for depth — image stays visible on the right. */
   .hero-bg::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.12) 0%,
-      rgba(0, 0, 0, 0.28) 45%,
-      rgba(0, 0, 0, 0.48) 100%
-    );
+    background:
+      linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.60) 0%,
+        rgba(0, 0, 0, 0.42) 45%,
+        rgba(0, 0, 0, 0.08) 75%,
+        transparent 100%
+      ),
+      linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.08) 0%,
+        rgba(0, 0, 0, 0.22) 55%,
+        rgba(0, 0, 0, 0.50) 100%
+      );
   }
 
   .hero-tag {
@@ -100,13 +110,16 @@ import Button from "../ui/Button.astro";
     background: #8c8578;
   }
 
+  /* Editorial type scale — desktop H1 ≥ 4× body (1rem × 4 = 4rem min).
+     8rem (128px) at full width keeps hierarchy dominant and tight. */
   .hero-h1 {
     font-family: "Tenor Sans", serif;
-    font-size: clamp(4rem, 9vw, 7rem);
+    font-size: clamp(4rem, 9.5vw, 8rem);
     font-weight: 400;
-    line-height: 0.95;
+    line-height: 1.1;
     letter-spacing: 0.01em;
-    color: white;
+    color: #ffffff;
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.30);
     margin-bottom: clamp(2rem, 4vw, 3rem);
     max-width: 10ch;
   }
@@ -132,19 +145,62 @@ import Button from "../ui/Button.astro";
     align-items: center;
   }
 
+  /* Ghost CTA — bordered 'ghost-light' style with a guaranteed 44×44px touch
+     target, meeting WCAG 2.5.5 (AA) pointer target size requirements. */
+  .hero-ghost-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 24px;
+    font-family: 'Tenor Sans', serif;
+    font-size: var(--text-xs);
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 2px;
+    text-decoration: none;
+    background: transparent;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    transition: background 0.22s ease, border-color 0.22s ease, color 0.22s ease;
+  }
+  .hero-ghost-btn:hover,
+  .hero-ghost-btn:focus-visible {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.85);
+    outline: 2px solid rgba(255, 255, 255, 0.6);
+    outline-offset: 2px;
+  }
+
   @media (max-width: 768px) {
+    /* Stack vertically, centre the bg, glassmorphism backing for legibility */
     .hero {
+      align-items: flex-end;
       padding-bottom: 6vh;
     }
 
     .hero-content {
-      padding-left: 1.5rem;
+      padding: 1.75rem 1.5rem;
       padding-right: 1.5rem;
       max-width: 100%;
+      /* Glassmorphism block — ensures text legibility over busy image areas */
+      background: rgba(10, 8, 6, 0.52);
+      backdrop-filter: blur(14px) saturate(140%);
+      -webkit-backdrop-filter: blur(14px) saturate(140%);
+      border-top: 0.5px solid rgba(255, 255, 255, 0.12);
+      border-radius: 4px 4px 0 0;
     }
 
     .hero-h1 {
       font-size: clamp(3rem, 12vw, 5rem);
+      line-height: 1.1;
+      max-width: 100%;
+    }
+
+    .hero-sub {
       max-width: 100%;
     }
 
@@ -152,6 +208,12 @@ import Button from "../ui/Button.astro";
       flex-direction: column;
       align-items: stretch;
       width: 100%;
+    }
+
+    .hero-ghost-btn {
+      /* Stretch to full width on mobile to match Button component behaviour */
+      width: 100%;
+      justify-content: center;
     }
   }
 </style>

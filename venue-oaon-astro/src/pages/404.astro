@@ -37,10 +37,11 @@ import Button from '../components/ui/Button.astro';
   .eyebrow-line { display: block; width: 32px; height: 0.5px; background: #E0DDD8; }
   .not-found-h1 {
     font-family: 'Tenor Sans', serif;
-    font-size: var(--text-h1);
+    /* Editorial scale: visible hierarchy over body on all screen sizes */
+    font-size: clamp(2.5rem, 6.5vw, 6rem);
     font-weight: 400;
     letter-spacing: 0.01em;
-    line-height: 1.0;
+    line-height: 1.1;
     color: #1A1A1A;
     margin-bottom: 1.5rem;
     max-width: 14ch;

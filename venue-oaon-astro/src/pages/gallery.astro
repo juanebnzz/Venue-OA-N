@@ -112,12 +112,16 @@ const items = [
   .filter-bar { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: clamp(2.5rem,5vw,4rem); }
   .filter-btn {
     font-family: Inter, sans-serif; font-size: var(--text-xs); letter-spacing: 0.16em;
-    text-transform: uppercase; padding: 10px 20px; border-radius: 2px;
+    text-transform: uppercase; padding: 0 20px; border-radius: 2px;
     border: 0.5px solid #E0DDD8; background: transparent; color: #8C8578;
-    cursor: pointer; transition: all 0.2s; min-height: 40px;
+    cursor: pointer; transition: all 0.2s;
+    /* WCAG 2.5.5: ≥44px touch target */
+    min-height: 44px;
+    display: inline-flex; align-items: center;
   }
   .filter-btn:hover { border-color: #8C8578; color: #1A1A1A; }
   .filter-btn.active { background: #1A1A1A; color: #FFFFFF; border-color: #1A1A1A; }
+  .filter-btn:focus-visible { outline: 2px solid #8B6448; outline-offset: 2px; }
 
   .gallery-grid { columns: 1; column-gap: 1rem; }
   @media (min-width: 640px)  { .gallery-grid { columns: 2; } }
@@ -173,11 +177,14 @@ const items = [
   .lightbox-nav  { display: flex; gap: 0.5rem; }
   .lightbox-nav button {
     background: rgba(255,255,255,0.1); border: none; cursor: pointer;
-    width: 40px; height: 40px; border-radius: 50%; display: flex;
+    /* ≥44×44px touch target */
+    width: 44px; height: 44px; border-radius: 50%; display: flex;
     align-items: center; justify-content: center; color: white; transition: background 0.2s;
   }
   .lightbox-nav button:hover { background: rgba(255,255,255,0.2); }
+  .lightbox-nav button:focus-visible { outline: 2px solid rgba(255,255,255,0.6); outline-offset: 2px; }
 
+  /* Editorial section headings — tight 1.1 line-height */
   .section-title { font-family: 'Tenor Sans', serif; font-size: var(--text-h2); font-weight: 400; letter-spacing: 0.02em; line-height: 1.1; color: #1A1A1A; }
   .section-body  { font-size: var(--text-body); color: #8C8578; line-height: 1.75; }
 </style>

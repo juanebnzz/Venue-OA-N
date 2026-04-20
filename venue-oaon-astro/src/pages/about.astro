@@ -192,10 +192,11 @@ import Button from '../components/ui/Button.astro';
   .btn-white {
     display: inline-flex; align-items: center; min-height: 48px;
     font-family: 'Tenor Sans', serif; font-size: var(--text-xs); letter-spacing: 0.18em; text-transform: uppercase;
-    padding: 14px 32px; border-radius: 2px; background: white; color: #1A1A1A;
+    padding: 0 32px; border-radius: 2px; background: white; color: #1A1A1A;
     transition: background 0.2s;
   }
   .btn-white:hover { background: #F5F2EE; }
+  .btn-white:focus-visible { outline: 2px solid rgba(255,255,255,0.7); outline-offset: 3px; border-radius: 2px; }
 
   .partner-features { display: flex; flex-direction: column; gap: 0; }
   .partner-feature  { padding: 1.125rem 0; border-bottom: 0.5px solid rgba(255,255,255,0.1); display: flex; gap: 1rem; align-items: flex-start; }

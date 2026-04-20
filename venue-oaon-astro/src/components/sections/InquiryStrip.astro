@@ -43,7 +43,7 @@ const WA_NUMBER = "27761823532";
             type="email"
             id="h-email"
             name="email"
-            placeholder="jane@email.com"
+            placeholder="info@venueoaon.co.za"
             autocomplete="email"
             required
           />
@@ -130,6 +130,8 @@ const WA_NUMBER = "27761823532";
     line-height: 1.1;
     color: #ffffff;
     margin-bottom: 1.25rem;
+    /* Subtle text shadow ensures contrast even if background lightens */
+    text-shadow: 0 1px 12px rgba(0,0,0,0.18);
   }
   .inquiry-strip-sub {
     font-size: var(--text-body);
@@ -137,23 +139,32 @@ const WA_NUMBER = "27761823532";
     line-height: 1.75;
   }
 
+  /* Ghost button — bordered, 48px tall, meets WCAG 2.5.5 touch target */
   .btn-ol-light {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     font-family: "Tenor Sans", serif;
     font-size: var(--text-xs);
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    padding: 14px 32px;
+    padding: 0 32px;
     border-radius: 2px;
-    border: 0.5px solid rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.45);
     color: white;
     margin-top: 2rem;
     min-height: 48px;
-    transition: background 0.2s;
+    transition: background 0.22s ease, border-color 0.22s ease;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
   }
   .btn-ol-light:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.75);
+  }
+  .btn-ol-light:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.65);
+    outline-offset: 2px;
   }
 
   /* Dark-mode form overrides */
@@ -189,7 +200,7 @@ const WA_NUMBER = "27761823532";
     font-size: var(--text-xs);
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    padding: 14px 32px;
+    padding: 0 32px;
     border-radius: 2px;
     border: none;
     background: #8b6448;
@@ -197,21 +208,27 @@ const WA_NUMBER = "27761823532";
     min-height: 48px;
     cursor: pointer;
     transition: background 0.22s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
-  .btn-submit:hover {
-    background: #6e4e38;
-  }
+  .btn-submit:hover { background: #6e4e38; }
+  .btn-submit:focus-visible { outline: 2px solid #8b6448; outline-offset: 3px; }
 
   .inquiry-note {
     font-size: var(--text-sm);
     color: #8c8578;
     margin-top: 1.25rem;
   }
+  /* Boosted from 0.45 → 0.82 for ≥4.5:1 contrast ratio on #1a1a1a bg */
   .inquiry-note a {
-    color: rgba(255, 255, 255, 0.45);
+    color: rgba(255, 255, 255, 0.82);
     text-decoration: underline;
     text-underline-offset: 3px;
+    transition: color 0.2s;
   }
+  .inquiry-note a:hover { color: #ffffff; }
+  .inquiry-note a:focus-visible { outline: 2px solid rgba(255,255,255,0.6); outline-offset: 2px; border-radius: 2px; }
 
   .form-feedback {
     padding: 1.5rem 2rem;

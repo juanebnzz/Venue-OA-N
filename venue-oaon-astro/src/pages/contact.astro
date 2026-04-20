@@ -60,8 +60,8 @@ const WA_MSG = encodeURIComponent("Hi, I'd like to enquire about Venue Oaón");
               <div class="contact-detail-body">
                 <span class="contact-detail-label">Email</span>
                 <span class="contact-detail-val"
-                  ><a href="mailto:hello@venueoaon.co.za"
-                    >hello@venueoaon.co.za</a
+                  ><a href="mailto:info@venueoaon.co.za"
+                    >info@venueoaon.co.za</a
                   ></span
                 >
               </div>
@@ -231,7 +231,7 @@ const WA_MSG = encodeURIComponent("Hi, I'd like to enquire about Venue Oaón");
                   type="email"
                   id="c-email"
                   name="email"
-                  placeholder="jane@email.com"
+                  placeholder="info@venueoaon.co.za"
                   autocomplete="email"
                   required
                 />
@@ -468,9 +468,8 @@ const WA_MSG = encodeURIComponent("Hi, I'd like to enquire about Venue Oaón");
     text-underline-offset: 3px;
     transition: color 0.2s;
   }
-  .contact-detail-val a:hover {
-    color: #8b6448;
-  }
+  .contact-detail-val a:hover { color: #8b6448; }
+  .contact-detail-val a:focus-visible { outline: 2px solid #8b6448; outline-offset: 2px; border-radius: 2px; }
 
   .wa-option {
     background: #f0fbf4;
@@ -482,10 +481,10 @@ const WA_MSG = encodeURIComponent("Hi, I'd like to enquire about Venue Oaón");
     gap: 1.25rem;
     text-decoration: none;
     transition: background 0.2s;
+    /* Acts as a CTA card — ensure keyboard visibility */
   }
-  .wa-option:hover {
-    background: #e5f7eb;
-  }
+  .wa-option:hover { background: #e5f7eb; }
+  .wa-option:focus-visible { outline: 2px solid #25d366; outline-offset: 2px; border-radius: 8px; }
   .wa-option-icon {
     background: #25d366;
     width: 44px;
@@ -585,12 +584,13 @@ const WA_MSG = encodeURIComponent("Hi, I'd like to enquire about Venue Oaón");
     margin-bottom: 2rem;
   }
 
+  /* WCAG 2.5.5 compliant submit button */
   .btn-submit {
     font-family: "Tenor Sans", serif;
     font-size: var(--text-xs);
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    padding: 14px 32px;
+    padding: 0 32px;
     border-radius: 2px;
     border: none;
     background: #8b6448;
@@ -598,10 +598,12 @@ const WA_MSG = encodeURIComponent("Hi, I'd like to enquire about Venue Oaón");
     min-height: 48px;
     cursor: pointer;
     transition: background 0.22s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
-  .btn-submit:hover {
-    background: #6e4e38;
-  }
+  .btn-submit:hover { background: #6e4e38; }
+  .btn-submit:focus-visible { outline: 2px solid #8b6448; outline-offset: 3px; }
 
   .faq {
     display: flex;
@@ -614,6 +616,7 @@ const WA_MSG = encodeURIComponent("Hi, I'd like to enquire about Venue Oaón");
   .faq-item:first-child {
     border-top: 0.5px solid #e0ddd8;
   }
+  /* FAQ summary is interactive — needs keyboard target and focus indicator */
   .faq-q {
     padding: 1.25rem 0;
     font-family: "Tenor Sans", serif;
@@ -626,7 +629,9 @@ const WA_MSG = encodeURIComponent("Hi, I'd like to enquire about Venue Oaón");
     gap: 1rem;
     list-style: none;
     user-select: none;
+    min-height: 44px;
   }
+  .faq-item:focus-within .faq-q { color: #8b6448; }
   .faq-q::-webkit-details-marker {
     display: none;
   }

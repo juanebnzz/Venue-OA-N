@@ -65,6 +65,7 @@ const cls = ['pkg', featured ? 'pkg--featured' : '', extra].filter(Boolean).join
   .pkg-enquire { font-size: var(--text-sm); color: #8C8578; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
   .pkg--featured .pkg-enquire { color: rgba(255,255,255,0.5); }
 
+  /* Touch target: 44px min height for WCAG 2.5.5 compliance */
   .pkg-enquire-link {
     font-size: var(--text-xs);
     letter-spacing: 0.14em;
@@ -73,10 +74,16 @@ const cls = ['pkg', featured ? 'pkg--featured' : '', extra].filter(Boolean).join
     text-underline-offset: 3px;
     color: #8B6448;
     transition: color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding-right: 2px;
   }
-  .pkg--featured .pkg-enquire-link { color: rgba(255,255,255,0.6); }
+  .pkg--featured .pkg-enquire-link { color: rgba(255,255,255,0.7); }
   .pkg-enquire-link:hover { color: #1A1A1A; }
   .pkg--featured .pkg-enquire-link:hover { color: white; }
+  .pkg-enquire-link:focus-visible { outline: 2px solid #8B6448; outline-offset: 2px; border-radius: 2px; }
+  .pkg--featured .pkg-enquire-link:focus-visible { outline-color: rgba(255,255,255,0.6); }
 
   .pkg-divider { border: none; border-top: 0.5px solid #E0DDD8; }
   .pkg--featured .pkg-divider { border-color: rgba(255,255,255,0.15); }

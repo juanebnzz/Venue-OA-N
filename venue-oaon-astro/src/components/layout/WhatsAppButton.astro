@@ -51,6 +51,15 @@ const WA_MSG = encodeURIComponent("Hi, I'd like to enquire about Venue Oaón");
       0 8px 32px rgba(37, 211, 102, 0.4),
       0 4px 12px rgba(0, 0, 0, 0.2);
   }
+  /* Keyboard focus ring — uses an inset ring so it doesn't disturb the pulse animation */
+  .wa-float:focus-visible {
+    outline: none;
+    box-shadow:
+      0 4px 20px rgba(37, 211, 102, 0.35),
+      0 2px 8px rgba(0, 0, 0, 0.15),
+      0 0 0 3px #ffffff,
+      0 0 0 5px #25d366;
+  }
   .wa-float::before {
     content: "";
     position: absolute;
