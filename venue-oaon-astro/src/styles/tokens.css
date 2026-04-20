@@ -18,4 +18,22 @@
 
   /* Nav */
   --nav-h: 64px;
+
+  /* Colour palette */
+  --white:         #FFFFFF;
+  --linen:         #F5F2EE;
+  --stone:         #8C8578;
+  --stone-text:    #6B6560;
+  --charcoal:      #1A1A1A;
+  --charcoal-warm: #1E1714;
+  --accent:        #8B6448;
+  --accent-deep:   #6E4E38;
+  --accent-pale:   #EDE5DC;
+  --accent-muted:  #B89882;
+  --divider:       #E0DDD8;
+
+  /* Intentional easing curves */
+  --ease-out-strong:    cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer:        cubic-bezier(0.32, 0.72, 0, 1);
 }
