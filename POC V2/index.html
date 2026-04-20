@@ -1,209 +1,575 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Venue Oaón — Intimate Event Space, Montana Pretoria</title>
-  <meta name="description" content="An intimate event space in Montana, Pretoria for gatherings of 20–40 people. Baby showers, kitchen teas, bridal showers and birthdays." />
+  <meta name="description"
+    content="An intimate event space in Montana, Pretoria for gatherings of 20–40 people. Baby showers, kitchen teas, bridal showers and birthdays." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="shared.css" />
   <style>
     /* ── HOME-SPECIFIC ───────────────────────────────────────── */
 
     /* HERO */
+
     .hero {
-      position: relative; min-height: 100vh;
-      display: flex; flex-direction: column; justify-content: flex-end;
-      overflow: hidden; padding-top: var(--nav-h);
+      position: relative;
+      min-height: 100vh;
+      /* THIS is missing */
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+      padding-top: var(--nav-h);
     }
+
     .hero-bg {
-      position: absolute; inset: 0;
-      background: linear-gradient(155deg, #EAE3DA 0%, #D5CCBF 45%, #C4BAB0 100%);
+      position: absolute;
+      inset: 0;
+      background-image: url('images/hero_bg_1.jpg');
+      /* change this */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: 0;
     }
-    /* Add real photo: <img src="images/hero.webp" alt="..." style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" /> */
+
+    .hero-bg {
+      transform: scale(1.05);
+    }
+
     .hero-bg::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(to top,
-        rgba(255,255,255,0.96) 0%,
-        rgba(255,255,255,0.5) 35%,
-        rgba(255,255,255,0.05) 70%);
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom,
+          rgba(0, 0, 0, 0.15) 0%,
+          rgba(0, 0, 0, 0.35) 50%,
+          rgba(0, 0, 0, 0.55) 100%);
     }
+
     .hero-tag {
-      position: absolute; top: 88px; right: var(--g); z-index: 2;
-      writing-mode: vertical-rl; font-size: var(--xs);
-      letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--stone); opacity: 0.45;
+      position: absolute;
+      top: 88px;
+      right: var(--g);
+      z-index: 2;
+      writing-mode: vertical-rl;
+      font-size: var(--xs);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+      opacity: 0.45;
     }
+
     .hero-content {
-      position: relative; z-index: 2;
+      position: relative;
+      z-index: 2;
       padding: 0 var(--g) clamp(4rem, 8vw, 6.5rem);
-      max-width: var(--max); width: 100%;
+      max-width: var(--max);
+      width: 100%;
     }
+
     .hero-eyebrow {
-      display: flex; align-items: center; gap: 14px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
       margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+      color: white;
+
     }
+
     .hero-eyebrow::before {
-      content: ''; display: block; width: 32px; height: 0.5px; background: var(--stone);
+      content: '';
+      display: block;
+      width: 32px;
+      height: 0.5px;
+      background: var(--stone)
     }
+
     .hero-h1 {
-      font-family: var(--fh); font-size: var(--h1);
-      font-weight: 400; letter-spacing: 0.01em; line-height: 1.0;
-      color: var(--charcoal); margin-bottom: clamp(2rem, 4vw, 3.5rem);
+      font-family: var(--fh);
+      font-size: var(--h1);
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      line-height: 1.0;
+      color: white;
+      margin-bottom: clamp(2rem, 4vw, 3.5rem);
       max-width: 16ch;
     }
+
     /* Staggered load animations for hero text */
-    .hero-eyebrow { animation: rise 0.7s ease 0.1s both; }
-    .hero-h1      { animation: rise 0.7s ease 0.25s both; }
-    .hero-bottom  { animation: rise 0.7s ease 0.4s both; }
-    @keyframes rise {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
+    .hero-eyebrow {
+      animation: rise 0.7s ease 0.1s both;
     }
+
+    .hero-h1 {
+      animation: rise 0.7s ease 0.25s both;
+    }
+
     .hero-bottom {
-      display: flex; flex-wrap: wrap;
-      align-items: flex-end; justify-content: space-between; gap: 2rem;
+      animation: rise 0.7s ease 0.4s both;
     }
-    .hero-sub { font-size: var(--body); color: var(--stone); line-height: 1.75; max-width: 340px; }
-    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .hero-sub {
+      font-size: var(--body);
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.75;
+      max-width: 340px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
 
     /* STATS STRIP */
     .stats {
-      background: var(--charcoal); padding: 2rem var(--g);
+      background: var(--charcoal);
+      padding: 2rem var(--g);
     }
+
     .stats-inner {
-      max-width: var(--max); margin: 0 auto;
-      display: flex; flex-wrap: wrap; gap: 0;
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
       justify-content: space-between;
     }
+
     .stat {
-      display: flex; flex-direction: column; gap: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
       padding: 0.75rem 2rem 0.75rem 0;
-      border-right: 0.5px solid rgba(255,255,255,0.1);
-      flex: 1; min-width: 120px;
+      border-right: 0.5px solid rgba(255, 255, 255, 0.1);
+      flex: 1;
+      min-width: 120px;
     }
-    .stat:first-child { padding-left: 0; }
-    .stat:last-child  { border-right: none; padding-right: 0; }
+
+    .stat:first-child {
+      padding-left: 0;
+    }
+
+    .stat:last-child {
+      border-right: none;
+      padding-right: 0;
+    }
+
     .stat-val {
-      font-family: var(--fh); font-size: clamp(1.25rem, 3vw, 2rem);
-      letter-spacing: 0.02em; color: var(--white); line-height: 1;
+      font-family: var(--fh);
+      font-size: clamp(1.25rem, 3vw, 2rem);
+      letter-spacing: 0.02em;
+      color: var(--white);
+      line-height: 1;
     }
+
     .stat-key {
-      font-size: var(--xs); letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--stone);
+      font-size: var(--xs);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--stone);
     }
 
     /* INTRO */
     .intro-grid {
-      display: grid; gap: clamp(3rem, 6vw, 6rem); grid-template-columns: 1fr;
+      display: grid;
+      gap: clamp(3rem, 6vw, 6rem);
+      grid-template-columns: 1fr;
     }
-    @media (min-width: 900px) { .intro-grid { grid-template-columns: 1fr 1fr; align-items: start; } }
+
+    @media (min-width: 900px) {
+      .intro-grid {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+      }
+    }
 
     .intro-text {
-      font-family: var(--fh); font-size: clamp(1.125rem, 2.5vw, 1.5rem);
-      font-weight: 400; letter-spacing: 0.02em; line-height: 1.5;
+      font-family: var(--fh);
+      font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      line-height: 1.5;
       color: var(--charcoal);
     }
-    .intro-sub { font-size: var(--body); color: var(--stone); line-height: 1.8; margin-top: 1.25rem; }
 
-    .pillars { display: flex; flex-direction: column; }
-    .pillar {
-      padding: 1.25rem 0; border-bottom: 0.5px solid var(--divider);
-      display: flex; gap: 1.25rem; align-items: flex-start;
+    .intro-sub {
+      font-size: var(--body);
+      color: var(--stone);
+      line-height: 1.8;
+      margin-top: 1.25rem;
     }
-    .pillar:first-child { border-top: 0.5px solid var(--divider); }
-    .pillar-num { font-size: var(--xs); letter-spacing: 0.1em; color: var(--stone); padding-top: 2px; flex-shrink: 0; }
-    .pillar-title { font-family: var(--fh); font-size: 0.9375rem; letter-spacing: 0.04em; color: var(--charcoal); display: block; margin-bottom: 4px; }
-    .pillar-body  { font-size: var(--sm); color: var(--stone); line-height: 1.65; }
+
+    .pillars {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pillar {
+      padding: 1.25rem 0;
+      border-bottom: 0.5px solid var(--divider);
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+    }
+
+    .pillar:first-child {
+      border-top: 0.5px solid var(--divider);
+    }
+
+    .pillar-num {
+      font-size: var(--xs);
+      letter-spacing: 0.1em;
+      color: var(--stone);
+      padding-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .pillar-title {
+      font-family: var(--fh);
+      font-size: 0.9375rem;
+      letter-spacing: 0.04em;
+      color: var(--charcoal);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .pillar-body {
+      font-size: var(--sm);
+      color: var(--stone);
+      line-height: 1.65;
+    }
 
     /* SUITES */
     .suites-grid {
-      display: grid; gap: 1.5rem; grid-template-columns: 1fr;
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: 1fr;
     }
-    @media (min-width: 640px) { .suites-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (min-width: 1024px) { .suites-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    @media (min-width: 640px) {
+      .suites-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .suites-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
 
     .suite-card {
-      background: var(--white); border-radius: 10px;
-      overflow: hidden; display: flex; flex-direction: column;
+      background: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
       border: 0.5px solid var(--divider);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
     .suite-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 16px 48px rgba(0,0,0,0.08);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
     }
+
     .suite-img {
-      height: 230px; position: relative; overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
+      height: 230px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .suite-img--myrrh  { background: linear-gradient(135deg, #EBE4DC, #D8D0C4); }
-    .suite-img--olive  { background: linear-gradient(135deg, #E5EBE0, #D0D8C6); }
-    .suite-img--garden { background: linear-gradient(135deg, #E0EBE6, #C8D8CF); }
-    .suite-img-label { font-size: var(--xs); letter-spacing: 0.14em; text-transform: uppercase; color: var(--stone); opacity: 0.4; }
-    .suite-body { padding: 1.75rem; flex: 1; display: flex; flex-direction: column; gap: 1rem; }
-    .suite-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
-    .suite-name { font-family: var(--fh); font-size: var(--h3); font-weight: 400; letter-spacing: 0.02em; }
-    .suite-desc { font-size: var(--sm); color: var(--stone); line-height: 1.65; flex: 1; }
-    .suite-meta { border-top: 0.5px solid var(--divider); padding-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
-    .suite-row { display: flex; justify-content: space-between; align-items: center; }
-    .suite-row-label { font-size: var(--xs); letter-spacing: 0.14em; text-transform: uppercase; color: var(--stone); }
-    .suite-row-val { font-family: var(--fh); font-size: 0.875rem; letter-spacing: 0.04em; }
+
+    .suite-img--myrrh {
+      background: linear-gradient(135deg, #EBE4DC, #D8D0C4);
+    }
+
+    .suite-img--olive {
+      background: linear-gradient(135deg, #E5EBE0, #D0D8C6);
+    }
+
+    .suite-img--garden {
+      background: linear-gradient(135deg, #E0EBE6, #C8D8CF);
+    }
+
+    .suite-img-label {
+      font-size: var(--xs);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--stone);
+      opacity: 0.4;
+    }
+
+    .suite-body {
+      padding: 1.75rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .suite-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .suite-name {
+      font-family: var(--fh);
+      font-size: var(--h3);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+
+    .suite-desc {
+      font-size: var(--sm);
+      color: var(--stone);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .suite-meta {
+      border-top: 0.5px solid var(--divider);
+      padding-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .suite-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .suite-row-label {
+      font-size: var(--xs);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--stone);
+    }
+
+    .suite-row-val {
+      font-family: var(--fh);
+      font-size: 0.875rem;
+      letter-spacing: 0.04em;
+    }
 
     /* PACKAGES PREVIEW */
     .pkgs-preview {
-      display: grid; gap: 1px; background: var(--divider);
-      border: 0.5px solid var(--divider); border-radius: 8px; overflow: hidden;
+      display: grid;
+      gap: 1px;
+      background: var(--divider);
+      border: 0.5px solid var(--divider);
+      border-radius: 8px;
+      overflow: hidden;
       grid-template-columns: 1fr;
     }
-    @media (min-width: 640px)  { .pkgs-preview { grid-template-columns: repeat(2, 1fr); } }
-    @media (min-width: 1024px) { .pkgs-preview { grid-template-columns: repeat(4, 1fr); } }
+
+    @media (min-width: 640px) {
+      .pkgs-preview {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .pkgs-preview {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
 
     .pkg-peek {
-      background: var(--white); padding: 2rem 1.75rem;
-      display: flex; flex-direction: column; gap: 0.75rem;
+      background: var(--white);
+      padding: 2rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
       transition: background 0.2s;
     }
-    .pkg-peek:hover { background: var(--linen); }
-    .pkg-peek--featured { background: var(--forest); }
-    .pkg-peek--featured:hover { background: #003a04; }
-    .pkg-peek-tag { font-size: var(--xs); letter-spacing: 0.14em; text-transform: uppercase; background: rgba(255,255,255,0.15); color: white; padding: 4px 10px; border-radius: 2px; align-self: flex-start; }
-    .pkg-peek-name { font-family: var(--fh); font-size: 1.0625rem; letter-spacing: 0.04em; }
-    .pkg-peek--featured .pkg-peek-name { color: white; }
-    .pkg-peek-enquire { font-size: var(--sm); color: var(--stone); }
-    .pkg-peek--featured .pkg-peek-enquire { color: rgba(255,255,255,0.5); }
-    .pkg-peek-divider { border: none; border-top: 0.5px solid var(--divider); }
-    .pkg-peek--featured .pkg-peek-divider { border-color: rgba(255,255,255,0.15); }
-    .pkg-peek ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
-    .pkg-peek li { font-size: var(--sm); color: var(--stone); display: flex; gap: 0.5rem; }
-    .pkg-peek--featured li { color: rgba(255,255,255,0.7); }
-    .pkg-peek li::before { content: '–'; color: var(--divider); flex-shrink: 0; }
-    .pkg-peek--featured li::before { color: rgba(255,255,255,0.25); }
-    .pkgs-cta { margin-top: 2rem; text-align: center; }
+
+    .pkg-peek:hover {
+      background: var(--linen);
+    }
+
+    .pkg-peek--featured {
+      background: var(--forest);
+    }
+
+    .pkg-peek--featured:hover {
+      background: #003a04;
+    }
+
+    .pkg-peek-tag {
+      font-size: var(--xs);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      padding: 4px 10px;
+      border-radius: 2px;
+      align-self: flex-start;
+    }
+
+    .pkg-peek-name {
+      font-family: var(--fh);
+      font-size: 1.0625rem;
+      letter-spacing: 0.04em;
+    }
+
+    .pkg-peek--featured .pkg-peek-name {
+      color: white;
+    }
+
+    .pkg-peek-enquire {
+      font-size: var(--sm);
+      color: var(--stone);
+    }
+
+    .pkg-peek--featured .pkg-peek-enquire {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .pkg-peek-divider {
+      border: none;
+      border-top: 0.5px solid var(--divider);
+    }
+
+    .pkg-peek--featured .pkg-peek-divider {
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .pkg-peek ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .pkg-peek li {
+      font-size: var(--sm);
+      color: var(--stone);
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .pkg-peek--featured li {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .pkg-peek li::before {
+      content: '–';
+      color: var(--divider);
+      flex-shrink: 0;
+    }
+
+    .pkg-peek--featured li::before {
+      color: rgba(255, 255, 255, 0.25);
+    }
+
+    .pkgs-cta {
+      margin-top: 2rem;
+      text-align: center;
+    }
 
     /* DETAILS */
     .details-grid {
-      display: grid; gap: 1rem; grid-template-columns: 1fr;
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
     }
-    @media (min-width: 640px) { .details-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (min-width: 1024px) { .details-grid { grid-template-columns: repeat(4, 1fr); } }
+
+    @media (min-width: 640px) {
+      .details-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .details-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
 
     .detail-card {
-      background: var(--white); border-radius: 8px; padding: 2rem 1.75rem;
-      display: flex; flex-direction: column; gap: 1rem;
+      background: var(--white);
+      border-radius: 8px;
+      padding: 2rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
       transition: box-shadow 0.2s;
     }
-    .detail-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.05); }
-    .detail-icon { color: var(--forest); width: 28px; height: 28px; }
-    .detail-title { font-family: var(--fh); font-size: 1rem; letter-spacing: 0.04em; }
-    .detail-desc { font-size: var(--sm); color: var(--stone); line-height: 1.65; }
-    .time-slots { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.25rem; }
+
+    .detail-card:hover {
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+    }
+
+    .detail-icon {
+      color: var(--forest);
+      width: 28px;
+      height: 28px;
+    }
+
+    .detail-title {
+      font-family: var(--fh);
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+    }
+
+    .detail-desc {
+      font-size: var(--sm);
+      color: var(--stone);
+      line-height: 1.65;
+    }
+
+    .time-slots {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.25rem;
+    }
+
     .time-slot {
-      font-size: var(--xs); letter-spacing: 0.12em; text-transform: uppercase;
-      padding: 4px 10px; border-radius: 2px;
-      background: var(--linen); border: 0.5px solid var(--divider); color: var(--charcoal);
+      font-size: var(--xs);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 2px;
+      background: var(--linen);
+      border: 0.5px solid var(--divider);
+      color: var(--charcoal);
     }
 
     /* INQUIRY STRIP */
@@ -211,31 +577,102 @@
       background: var(--charcoal);
       padding: clamp(4rem, 8vw, 7rem) 0;
     }
+
     .inquiry-strip-inner {
-      max-width: var(--max); margin: 0 auto; padding: 0 var(--g);
-      display: grid; grid-template-columns: 1fr; gap: 3rem;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--g);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
     }
-    @media (min-width: 900px) { .inquiry-strip-inner { grid-template-columns: 1fr 1.5fr; gap: 5rem; align-items: start; } }
-    .inquiry-strip-label { font-size: var(--xs); letter-spacing: 0.22em; text-transform: uppercase; color: var(--stone); display: block; margin-bottom: 1rem; }
-    .inquiry-strip-heading { font-family: var(--fh); font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 400; letter-spacing: 0.02em; line-height: 1.1; color: var(--white); margin-bottom: 1.25rem; }
-    .inquiry-strip-sub { font-size: var(--body); color: var(--stone); line-height: 1.75; }
-    .inquiry-strip input, .inquiry-strip select, .inquiry-strip textarea { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12); color: var(--white); }
-    .inquiry-strip input::placeholder, .inquiry-strip textarea::placeholder { color: rgba(255,255,255,0.3); }
-    .inquiry-strip input:focus, .inquiry-strip select:focus, .inquiry-strip textarea:focus { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.4); }
-    .inquiry-strip label { color: rgba(255,255,255,0.4); }
-    .inquiry-strip select { color: rgba(255,255,255,0.7); }
-    .inquiry-strip select option { background: var(--charcoal); }
-    .inquiry-note { font-size: var(--sm); color: var(--stone); margin-top: 1.25rem; }
-    .inquiry-note a { color: rgba(255,255,255,0.45); text-decoration: underline; text-underline-offset: 3px; }
+
+    @media (min-width: 900px) {
+      .inquiry-strip-inner {
+        grid-template-columns: 1fr 1.5fr;
+        gap: 5rem;
+        align-items: start;
+      }
+    }
+
+    .inquiry-strip-label {
+      font-size: var(--xs);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--stone);
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .inquiry-strip-heading {
+      font-family: var(--fh);
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+    }
+
+    .inquiry-strip-sub {
+      font-size: var(--body);
+      color: var(--stone);
+      line-height: 1.75;
+    }
+
+    .inquiry-strip input,
+    .inquiry-strip select,
+    .inquiry-strip textarea {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.12);
+      color: var(--white);
+    }
+
+    .inquiry-strip input::placeholder,
+    .inquiry-strip textarea::placeholder {
+      color: rgba(255, 255, 255, 0.3);
+    }
+
+    .inquiry-strip input:focus,
+    .inquiry-strip select:focus,
+    .inquiry-strip textarea:focus {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .inquiry-strip label {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .inquiry-strip select {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .inquiry-strip select option {
+      background: var(--charcoal);
+    }
+
+    .inquiry-note {
+      font-size: var(--sm);
+      color: var(--stone);
+      margin-top: 1.25rem;
+    }
+
+    .inquiry-note a {
+      color: rgba(255, 255, 255, 0.45);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
   </style>
 </head>
+
 <body>
 
   <!-- NAV -->
   <nav class="nav" role="navigation">
-    <a href="index.html" class="nav-logo">
-      <span class="nav-logo-name">Venue Oaón</span>
-      <span class="nav-logo-sub">Modern Events</span>
+    <a href="index.html" class="nav-logo" style="display: block;">
+      <img src="images/venue-oaon-logo.png" alt="Venue Oaón Logo"
+        style="height: 48px; width: auto; object-fit: contain;">
     </a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
@@ -268,7 +705,8 @@
       <div class="hero-eyebrow"><span class="label">Intimate event space</span></div>
       <h1 class="hero-h1">A space made<br />for your<br />moment.</h1>
       <div class="hero-bottom">
-        <p class="hero-sub">Three suites for gatherings of 20–40 people. Baby showers, kitchen teas, bridal showers, birthdays.</p>
+        <p class="hero-sub">Three suites for gatherings of 20–40 people. Baby showers, kitchen teas, bridal showers,
+          birthdays.</p>
         <div class="hero-actions">
           <a href="contact.html" class="btn btn-forest">Begin the Inquiry</a>
           <a href="#suites" class="btn btn-ghost">Explore the Suites</a>
@@ -296,26 +734,39 @@
             <span style="display:block;width:32px;height:0.5px;background:var(--divider);"></span>
             <span class="label">The Space</span>
           </div>
-          <p class="intro-text">Built for the small and significant. White-washed walls, warm wooden elements, and private garden spaces — made ready for your gathering.</p>
-          <p class="intro-sub">Every detail considered, because when people gather to celebrate someone they love, the space should feel like it was made for them.</p>
+          <p class="intro-text">Built for the small and significant. White-washed walls, warm wooden elements, and
+            private garden spaces — made ready for your gathering.</p>
+          <p class="intro-sub">Every detail considered, because when people gather to celebrate someone they love, the
+            space should feel like it was made for them.</p>
           <a href="about.html" class="btn btn-outline" style="margin-top:2rem;">About the Venue</a>
         </div>
         <div class="pillars reveal d2">
           <div class="pillar">
             <span class="pillar-num">01</span>
-            <div><span class="pillar-title">Self-Catering Freedom</span><p class="pillar-body">Bring your own food and drinks. No corkage fee. Kitchen access on selected packages.</p></div>
+            <div><span class="pillar-title">Self-Catering Freedom</span>
+              <p class="pillar-body">Bring your own food and drinks. No corkage fee. Kitchen access on selected
+                packages.</p>
+            </div>
           </div>
           <div class="pillar">
             <span class="pillar-num">02</span>
-            <div><span class="pillar-title">Décor Partnership</span><p class="pillar-body">Oaón Events handles full décor — balloon arches, florals, backdrops, and table settings.</p></div>
+            <div><span class="pillar-title">Décor Partnership</span>
+              <p class="pillar-body">Oaón Events handles full décor — balloon arches, florals, backdrops, and table
+                settings.</p>
+            </div>
           </div>
           <div class="pillar">
             <span class="pillar-num">03</span>
-            <div><span class="pillar-title">Secured Parking</span><p class="pillar-body">On-site secured parking for all guests. No street parking stress on the day.</p></div>
+            <div><span class="pillar-title">Secured Parking</span>
+              <p class="pillar-body">On-site secured parking for all guests. No street parking stress on the day.</p>
+            </div>
           </div>
           <div class="pillar">
             <span class="pillar-num">04</span>
-            <div><span class="pillar-title">Intimate by Design</span><p class="pillar-body">20–40 guests is a feature, not a limitation. Spacious enough to breathe, small enough to feel.</p></div>
+            <div><span class="pillar-title">Intimate by Design</span>
+              <p class="pillar-body">20–40 guests is a feature, not a limitation. Spacious enough to breathe, small
+                enough to feel.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -337,11 +788,15 @@
               <h3 class="suite-name">The Myrrh Suite</h3>
               <span class="badge badge-surface">Indoor</span>
             </div>
-            <p class="suite-desc">White-washed walls and soft natural light — suited to kitchen teas, bridal showers, and intimate birthday lunches.</p>
+            <p class="suite-desc">White-washed walls and soft natural light — suited to kitchen teas, bridal showers,
+              and intimate birthday lunches.</p>
             <div class="suite-meta">
-              <div class="suite-row"><span class="suite-row-label">Capacity</span><span class="suite-row-val">30–40 guests</span></div>
-              <div class="suite-row"><span class="suite-row-label">Morning</span><span class="suite-row-val">08:00 – 13:00</span></div>
-              <div class="suite-row"><span class="suite-row-label">Afternoon</span><span class="suite-row-val">14:00 – 19:00</span></div>
+              <div class="suite-row"><span class="suite-row-label">Capacity</span><span class="suite-row-val">30–40
+                  guests</span></div>
+              <div class="suite-row"><span class="suite-row-label">Morning</span><span class="suite-row-val">08:00 –
+                  13:00</span></div>
+              <div class="suite-row"><span class="suite-row-label">Afternoon</span><span class="suite-row-val">14:00 –
+                  19:00</span></div>
             </div>
           </div>
         </article>
@@ -352,11 +807,15 @@
               <h3 class="suite-name">The Olive Suite</h3>
               <span class="badge badge-surface">In / Out</span>
             </div>
-            <p class="suite-desc">A hybrid space flowing from an indoor lounge into an outdoor patio — ideal for baby showers where natural light matters.</p>
+            <p class="suite-desc">A hybrid space flowing from an indoor lounge into an outdoor patio — ideal for baby
+              showers where natural light matters.</p>
             <div class="suite-meta">
-              <div class="suite-row"><span class="suite-row-label">Capacity</span><span class="suite-row-val">20–30 guests</span></div>
-              <div class="suite-row"><span class="suite-row-label">Morning</span><span class="suite-row-val">08:00 – 13:00</span></div>
-              <div class="suite-row"><span class="suite-row-label">Afternoon</span><span class="suite-row-val">14:00 – 19:00</span></div>
+              <div class="suite-row"><span class="suite-row-label">Capacity</span><span class="suite-row-val">20–30
+                  guests</span></div>
+              <div class="suite-row"><span class="suite-row-label">Morning</span><span class="suite-row-val">08:00 –
+                  13:00</span></div>
+              <div class="suite-row"><span class="suite-row-label">Afternoon</span><span class="suite-row-val">14:00 –
+                  19:00</span></div>
             </div>
           </div>
         </article>
@@ -367,11 +826,15 @@
               <h3 class="suite-name">The Garden Suite</h3>
               <span class="badge badge-surface">Outdoor</span>
             </div>
-            <p class="suite-desc">An open garden setting dressed with greenery and dappled shade — beautiful for larger groups celebrating in fresh air.</p>
+            <p class="suite-desc">An open garden setting dressed with greenery and dappled shade — beautiful for larger
+              groups celebrating in fresh air.</p>
             <div class="suite-meta">
-              <div class="suite-row"><span class="suite-row-label">Capacity</span><span class="suite-row-val">30–40 guests</span></div>
-              <div class="suite-row"><span class="suite-row-label">Morning</span><span class="suite-row-val">08:00 – 13:00</span></div>
-              <div class="suite-row"><span class="suite-row-label">Afternoon</span><span class="suite-row-val">14:00 – 19:00</span></div>
+              <div class="suite-row"><span class="suite-row-label">Capacity</span><span class="suite-row-val">30–40
+                  guests</span></div>
+              <div class="suite-row"><span class="suite-row-label">Morning</span><span class="suite-row-val">08:00 –
+                  13:00</span></div>
+              <div class="suite-row"><span class="suite-row-label">Afternoon</span><span class="suite-row-val">14:00 –
+                  19:00</span></div>
             </div>
           </div>
         </article>
@@ -382,7 +845,8 @@
   <!-- PACKAGES PREVIEW -->
   <section class="section">
     <div class="wrap">
-      <div class="section-header reveal" style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;">
+      <div class="section-header reveal"
+        style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;">
         <div>
           <span class="label">Packages</span>
           <h2 class="section-title" style="margin-top:1rem;">Décor done for you.</h2>
@@ -394,30 +858,51 @@
           <p class="pkg-peek-name">Essential</p>
           <p class="pkg-peek-enquire">Enquire for pricing</p>
           <hr class="pkg-peek-divider" />
-          <ul><li>Balloon arch</li><li>Bamboo chairs</li><li>Linen tablecloths</li><li>Basic centrepieces</li></ul>
+          <ul>
+            <li>Balloon arch</li>
+            <li>Bamboo chairs</li>
+            <li>Linen tablecloths</li>
+            <li>Basic centrepieces</li>
+          </ul>
         </div>
         <div class="pkg-peek pkg-peek--featured reveal d1">
           <span class="pkg-peek-tag">Most popular</span>
           <p class="pkg-peek-name">Signature</p>
           <p class="pkg-peek-enquire">Enquire for pricing</p>
           <hr class="pkg-peek-divider" />
-          <ul><li>Custom balloon arch</li><li>Styled backdrop</li><li>Florals + centrepieces</li><li>Table linen + runners</li></ul>
+          <ul>
+            <li>Custom balloon arch</li>
+            <li>Styled backdrop</li>
+            <li>Florals + centrepieces</li>
+            <li>Table linen + runners</li>
+          </ul>
         </div>
         <div class="pkg-peek reveal d2">
           <p class="pkg-peek-name">Premier</p>
           <p class="pkg-peek-enquire">Enquire for pricing</p>
           <hr class="pkg-peek-divider" />
-          <ul><li>Full custom décor design</li><li>Balloon installation</li><li>Floral arrangements</li><li>Themed backdrop wall</li></ul>
+          <ul>
+            <li>Full custom décor design</li>
+            <li>Balloon installation</li>
+            <li>Floral arrangements</li>
+            <li>Themed backdrop wall</li>
+          </ul>
         </div>
         <div class="pkg-peek reveal d3">
           <p class="pkg-peek-name">Grand</p>
           <p class="pkg-peek-enquire">Enquire for pricing</p>
           <hr class="pkg-peek-divider" />
-          <ul><li>Bespoke concept design</li><li>Full suite transformation</li><li>Floral ceiling installation</li><li>Full event management</li></ul>
+          <ul>
+            <li>Bespoke concept design</li>
+            <li>Full suite transformation</li>
+            <li>Floral ceiling installation</li>
+            <li>Full event management</li>
+          </ul>
         </div>
       </div>
       <div class="pkgs-cta reveal">
-        <p style="font-size:var(--sm);color:var(--stone);margin-bottom:1rem;">All packages offered through Oaón Events · Custom scopes always available</p>
+        <p style="font-size:var(--sm);color:var(--stone);margin-bottom:1rem;">All packages offered through Oaón Events ·
+          Custom scopes always available</p>
         <a href="packages.html" class="btn btn-forest">Explore Packages</a>
       </div>
     </div>
@@ -432,22 +917,39 @@
       </div>
       <div class="details-grid">
         <div class="detail-card reveal">
-          <svg class="detail-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M8 16C8 11.58 11.58 8 16 8C20.42 8 24 11.58 24 16" stroke="currentColor" stroke-width="0.75" stroke-linecap="round"/><path d="M4 24H28" stroke="currentColor" stroke-width="0.75" stroke-linecap="round"/><path d="M16 8V4" stroke="currentColor" stroke-width="0.75" stroke-linecap="round"/></svg>
+          <svg class="detail-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <path d="M8 16C8 11.58 11.58 8 16 8C20.42 8 24 11.58 24 16" stroke="currentColor" stroke-width="0.75"
+              stroke-linecap="round" />
+            <path d="M4 24H28" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" />
+            <path d="M16 8V4" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" />
+          </svg>
           <h3 class="detail-title">No Corkage Fee</h3>
           <p class="detail-desc">Bring your own wine, champagne, or cocktails. No corkage fees, ever.</p>
         </div>
         <div class="detail-card reveal d1">
-          <svg class="detail-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="6" y="10" width="20" height="16" rx="1" stroke="currentColor" stroke-width="0.75"/><path d="M10 10V8C10 6.9 10.9 6 12 6H20C21.1 6 22 6.9 22 8V10" stroke="currentColor" stroke-width="0.75"/><path d="M16 15V21M13 18H19" stroke="currentColor" stroke-width="0.75" stroke-linecap="round"/></svg>
+          <svg class="detail-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <rect x="6" y="10" width="20" height="16" rx="1" stroke="currentColor" stroke-width="0.75" />
+            <path d="M10 10V8C10 6.9 10.9 6 12 6H20C21.1 6 22 6.9 22 8V10" stroke="currentColor" stroke-width="0.75" />
+            <path d="M16 15V21M13 18H19" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" />
+          </svg>
           <h3 class="detail-title">Self-Catering</h3>
-          <p class="detail-desc">Bring your own caterer, order in, or cook yourself. Kitchen access on selected packages.</p>
+          <p class="detail-desc">Bring your own caterer, order in, or cook yourself. Kitchen access on selected
+            packages.</p>
         </div>
         <div class="detail-card reveal d2">
-          <svg class="detail-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="5" y="12" width="22" height="14" rx="1" stroke="currentColor" stroke-width="0.75"/><path d="M10 12V9C10 7.9 12.69 7 16 7C19.31 7 22 7.9 22 9V12" stroke="currentColor" stroke-width="0.75"/><circle cx="16" cy="19" r="2" stroke="currentColor" stroke-width="0.75"/></svg>
+          <svg class="detail-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <rect x="5" y="12" width="22" height="14" rx="1" stroke="currentColor" stroke-width="0.75" />
+            <path d="M10 12V9C10 7.9 12.69 7 16 7C19.31 7 22 7.9 22 9V12" stroke="currentColor" stroke-width="0.75" />
+            <circle cx="16" cy="19" r="2" stroke="currentColor" stroke-width="0.75" />
+          </svg>
           <h3 class="detail-title">Secured Parking</h3>
           <p class="detail-desc">On-site secured parking for all guests. No stress on arrival day.</p>
         </div>
         <div class="detail-card reveal d3">
-          <svg class="detail-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="0.75"/><path d="M16 10V16L20 18" stroke="currentColor" stroke-width="0.75" stroke-linecap="round"/></svg>
+          <svg class="detail-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="0.75" />
+            <path d="M16 10V16L20 18" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" />
+          </svg>
           <h3 class="detail-title">Two Time Slots</h3>
           <p class="detail-desc">Morning and afternoon sessions — your event always starts fresh.</p>
           <div class="time-slots">
@@ -465,24 +967,32 @@
       <div class="reveal">
         <span class="inquiry-strip-label">Begin the Inquiry</span>
         <h2 class="inquiry-strip-heading">Tell us about your moment.</h2>
-        <p class="inquiry-strip-sub">Fill in what you know and we'll be in touch to talk through the rest. This is the beginning of a conversation, not a booking form.</p>
-        <a href="contact.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.25);color:white;margin-top:2rem;">Go to Full Enquiry Form</a>
+        <p class="inquiry-strip-sub">Fill in what you know and we'll be in touch to talk through the rest. This is the
+          beginning of a conversation, not a booking form.</p>
+        <a href="contact.html" class="btn btn-outline"
+          style="border-color:rgba(255,255,255,0.25);color:white;margin-top:2rem;">Go to Full Enquiry Form</a>
       </div>
       <form data-contact class="reveal d2">
         <div class="form-grid">
-          <div class="fg"><label for="h-name">Your Name</label><input type="text" id="h-name" name="name" placeholder="Jane Doe" autocomplete="name" required /></div>
-          <div class="fg"><label for="h-email">Email Address</label><input type="email" id="h-email" name="email" placeholder="jane@email.com" autocomplete="email" required /></div>
+          <div class="fg"><label for="h-name">Your Name</label><input type="text" id="h-name" name="name"
+              placeholder="Jane Doe" autocomplete="name" required /></div>
+          <div class="fg"><label for="h-email">Email Address</label><input type="email" id="h-email" name="email"
+              placeholder="jane@email.com" autocomplete="email" required /></div>
           <div class="fg"><label for="h-etype">Event Type</label>
             <select id="h-etype" name="etype">
               <option value="" disabled selected>Select type</option>
-              <option>Baby Shower</option><option>Kitchen Tea</option>
-              <option>Bridal Shower</option><option>Birthday</option><option>Other</option>
+              <option>Baby Shower</option>
+              <option>Kitchen Tea</option>
+              <option>Bridal Shower</option>
+              <option>Birthday</option>
+              <option>Other</option>
             </select>
           </div>
           <div class="fg"><label for="h-date">Preferred Date</label><input type="date" id="h-date" name="date" /></div>
           <div class="form-submit"><button type="submit" class="btn btn-forest">Send Inquiry</button></div>
         </div>
-        <p class="inquiry-note">We aim to respond within 24 hours. <a href="https://wa.me/27000000000" target="_blank" rel="noopener noreferrer">Message on WhatsApp</a>.</p>
+        <p class="inquiry-note">We aim to respond within 24 hours. <a href="https://wa.me/27000000000" target="_blank"
+            rel="noopener noreferrer">Message on WhatsApp</a>.</p>
       </form>
     </div>
   </div>
@@ -492,9 +1002,10 @@
     <div class="wrap">
       <div class="footer-grid">
         <div>
-          <p class="footer-logo-name">Venue Oaón</p>
-          <p class="footer-logo-sub">Modern Events</p>
-          <p class="footer-tagline">An intimate event space in Montana, Pretoria for small, considered gatherings of 20–40 people.</p>
+          <img src="images/venue-oaon-logo.png" alt="Venue Oaón Logo"
+            style="height: 54px; width: auto; object-fit: contain; margin-bottom: 1.5rem;">
+          <p class="footer-tagline" style="margin-top: 0;">An intimate event space in Montana, Pretoria for small,
+            considered gatherings of 20–40 people.</p>
         </div>
         <div>
           <span class="footer-col-label">Navigate</span>
@@ -508,23 +1019,34 @@
         </div>
         <div>
           <span class="footer-col-label">Find Us</span>
-          <ul class="footer-links"><li><a href="https://maps.google.com" target="_blank" rel="noopener noreferrer">Montana, Pretoria<br />Gauteng, South Africa</a></li></ul>
+          <ul class="footer-links">
+            <li><a href="https://maps.google.com" target="_blank" rel="noopener noreferrer">Montana,
+                Pretoria<br />Gauteng, South Africa</a></li>
+          </ul>
           <span class="footer-col-label" style="margin-top:2rem;">Events Partner</span>
-          <ul class="footer-links"><li><a href="#" target="_blank" rel="noopener noreferrer">Oaón Events →</a></li></ul>
+          <ul class="footer-links">
+            <li><a href="#" target="_blank" rel="noopener noreferrer">Oaón Events →</a></li>
+          </ul>
         </div>
       </div>
       <div class="footer-bottom">
         <p class="footer-copy">© 2025 Venue Oaón. All rights reserved.</p>
-        <p class="footer-partner">Décor & events by <a href="#" target="_blank" rel="noopener noreferrer">Oaón Events</a></p>
+        <p class="footer-partner">Décor & events by <a href="#" target="_blank" rel="noopener noreferrer">Oaón
+            Events</a></p>
       </div>
     </div>
   </footer>
 
   <!-- WHATSAPP -->
-  <a href="https://wa.me/27000000000?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20Venue%20Oa%C3%B3n" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-    <svg width="26" height="26" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  <a href="https://wa.me/27000000000?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20Venue%20Oa%C3%B3n"
+    class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+    </svg>
   </a>
 
   <script src="shared.js"></script>
 </body>
+
 </html>
