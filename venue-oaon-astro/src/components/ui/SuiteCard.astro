@@ -7,13 +7,14 @@ interface Props {
   capacity: string;
   morning: string;
   afternoon: string;
+  sunday: string;
   desc: string;
   gradientClass: string;
   image?: string;
   class?: string;
 }
 
-const { name, type, capacity, morning, afternoon, desc, gradientClass, image, class: extra = '' } = Astro.props;
+const { name, type, capacity, morning, afternoon, sunday, desc, gradientClass, image, class: extra = '' } = Astro.props;
 ---
 
 <article class={`suite-card${extra ? ' ' + extra : ''}`}>
@@ -41,6 +42,9 @@ const { name, type, capacity, morning, afternoon, desc, gradientClass, image, cl
       <div class="suite-row">
         <span class="suite-row-label">Afternoon</span>
         <span class="suite-row-val">{afternoon}</span>
+      </div>
+      <div class="suite-row">
+        <span class="suite-row-val suite-row-val--note">{sunday}</span>
       </div>
     </div>
   </div>
@@ -93,4 +97,5 @@ const { name, type, capacity, morning, afternoon, desc, gradientClass, image, cl
   .suite-row  { display: flex; justify-content: space-between; align-items: center; }
   .suite-row-label { font-size: var(--text-xs); letter-spacing: 0.14em; text-transform: uppercase; color: #8C8578; }
   .suite-row-val   { font-family: 'Tenor Sans', serif; font-size: 0.875rem; letter-spacing: 0.04em; }
+  .suite-row-val--note { font-family: inherit; font-size: var(--text-xs); color: #8C8578; letter-spacing: 0.06em; }
 </style>
