@@ -3,7 +3,16 @@ import Button from "../ui/Button.astro";
 ---
 
 <section class="hero">
-  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-bg" aria-hidden="true">
+    <img
+      src="/images/hero_bg_1.jpg"
+      alt=""
+      width="1920"
+      height="1080"
+      fetchpriority="high"
+      style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;border:0;"
+    />
+  </div>
   <span class="hero-tag" aria-hidden="true">Montana · Pretoria</span>
 
   <div class="hero-content">
@@ -45,12 +54,9 @@ import Button from "../ui/Button.astro";
   .hero-bg {
     position: absolute;
     inset: 0;
-    background-image: url("/images/hero_bg_1.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     z-index: 0;
     transform: scale(1.03);
+    overflow: hidden;
   }
 
   /* Dual-axis overlay: left-column gradient for text legibility (WCAG 4.5:1)
@@ -62,7 +68,7 @@ import Button from "../ui/Button.astro";
     background:
       linear-gradient(
         to right,
-        rgba(0, 0, 0, 0.60) 0%,
+        rgba(0, 0, 0, 0.6) 0%,
         rgba(0, 0, 0, 0.42) 45%,
         rgba(0, 0, 0, 0.08) 75%,
         transparent 100%
@@ -71,7 +77,7 @@ import Button from "../ui/Button.astro";
         to bottom,
         rgba(0, 0, 0, 0.08) 0%,
         rgba(0, 0, 0, 0.22) 55%,
-        rgba(0, 0, 0, 0.50) 100%
+        rgba(0, 0, 0, 0.5) 100%
       );
   }
 
@@ -110,8 +116,6 @@ import Button from "../ui/Button.astro";
     background: #8c8578;
   }
 
-  /* Editorial type scale : desktop H1 ≥ 4× body (1rem × 4 = 4rem min).
-     8rem (128px) at full width keeps hierarchy dominant and tight. */
   .hero-h1 {
     font-family: "Tenor Sans", serif;
     font-size: clamp(3.5rem, 8vw, 6rem);
@@ -119,7 +123,7 @@ import Button from "../ui/Button.astro";
     line-height: 1.1;
     letter-spacing: 0.01em;
     color: #ffffff;
-    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.30);
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.3);
     margin-bottom: clamp(2rem, 4vw, 3rem);
     max-width: 10ch;
   }
@@ -145,15 +149,13 @@ import Button from "../ui/Button.astro";
     align-items: center;
   }
 
-  /* Ghost CTA : bordered 'ghost-light' style with a guaranteed 44×44px touch
-     target, meeting WCAG 2.5.5 (AA) pointer target size requirements. */
   .hero-ghost-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     min-height: 48px;
     padding: 0 24px;
-    font-family: 'Tenor Sans', serif;
+    font-family: "Tenor Sans", serif;
     font-size: var(--text-xs);
     font-weight: 400;
     letter-spacing: 0.18em;
@@ -165,7 +167,10 @@ import Button from "../ui/Button.astro";
     background: transparent;
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
-    transition: background 0.22s ease, border-color 0.22s ease, color 0.22s ease;
+    transition:
+      background 0.22s ease,
+      border-color 0.22s ease,
+      color 0.22s ease;
   }
   .hero-ghost-btn:hover,
   .hero-ghost-btn:focus-visible {
@@ -176,14 +181,15 @@ import Button from "../ui/Button.astro";
   }
 
   @media (max-width: 768px) {
-    .hero-tag { display: none; }
+    .hero-tag {
+      display: none;
+    }
 
     .hero {
       align-items: flex-end;
       padding-bottom: 0;
     }
 
-    /* Full top-to-bottom fade on mobile — replaces the desktop left-to-right gradient */
     .hero-bg::after {
       background: linear-gradient(
         to bottom,
