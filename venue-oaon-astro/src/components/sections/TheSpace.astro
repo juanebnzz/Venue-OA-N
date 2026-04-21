@@ -3,7 +3,7 @@ import Button from '../ui/Button.astro';
 
 const pillars = [
   { num: '01', title: 'Self-Catering Freedom',   body: 'Bring your own food and drinks. No corkage fee. Kitchen access on selected packages.' },
-  { num: '02', title: 'Décor Partnership',        body: 'Oaón Events handles full décor : balloon arches, florals, backdrops, and table settings.' },
+  { num: '02', title: 'Décor Partnership',        body: '<a href="https://oaonevents.co.za/" target="_blank" rel="noopener noreferrer" class="pillar-link">Oaón Events</a> handles full décor : balloon arches, florals, backdrops, and table settings.' },
   { num: '03', title: 'Secured Parking',          body: 'On-site secured parking for all guests. No street parking stress on the day.' },
   { num: '04', title: 'Intimate by Design',       body: '20–40 guests is a feature, not a limitation. Spacious enough to breathe, small enough to feel.' },
 ];
@@ -34,7 +34,7 @@ const pillars = [
             <span class="pillar-num">{num}</span>
             <div>
               <span class="pillar-title">{title}</span>
-              <p class="pillar-body">{body}</p>
+              <p class="pillar-body" set:html={body} />
             </div>
           </div>
         ))}
@@ -76,6 +76,8 @@ const pillars = [
   .pillar-num  { font-size: var(--text-xs); letter-spacing: 0.1em; color: #8C8578; padding-top: 2px; flex-shrink: 0; }
   .pillar-title { font-family: 'Tenor Sans', serif; font-size: 0.9375rem; letter-spacing: 0.04em; color: #1A1A1A; display: block; margin-bottom: 4px; }
   .pillar-body  { font-size: var(--text-sm); color: #8C8578; line-height: 1.65; }
+  .pillar-link { color: #8B6448; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(139,100,72,0.4); transition: text-decoration-color 0.2s; }
+  .pillar-link:hover { text-decoration-color: #8B6448; }
 
   .mt-8 { margin-top: 2rem; }
 </style>

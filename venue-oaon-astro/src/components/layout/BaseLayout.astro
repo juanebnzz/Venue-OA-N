@@ -24,7 +24,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://venueoao
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en-ZA">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -35,8 +35,36 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://venueoao
 
   {noindex
     ? <meta name="robots" content="noindex, nofollow" />
-    : <meta name="robots" content="index, follow" />
+    : <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   }
+
+  <!-- Identity & authorship -->
+  <meta name="author" content="Venue Oaón" />
+  <meta name="copyright" content="Venue Oaón" />
+
+  <!-- Local SEO: geo signals -->
+  <meta name="geo.region" content="ZA-GP" />
+  <meta name="geo.placename" content="Montana, Pretoria, Gauteng, South Africa" />
+  <meta name="geo.position" content="-25.663333;28.259444" />
+  <meta name="ICBM" content="-25.663333, 28.259444" />
+
+  <!-- PWA / browser chrome -->
+  <meta name="theme-color" content="#8B6448" />
+  <meta name="application-name" content="Venue Oaón" />
+  <meta name="apple-mobile-web-app-title" content="Venue Oaón" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <!-- Hreflang: South African English -->
+  <link rel="alternate" hreflang="en-ZA" href={canonicalURL} />
+  <link rel="alternate" hreflang="x-default" href={canonicalURL} />
 
   <!-- Open Graph -->
   <meta property="og:type"        content="website" />
@@ -44,12 +72,19 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://venueoao
   <meta property="og:title"       content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:image"       content={new URL(ogImage, Astro.site ?? 'https://venueoaon.co.za')} />
+  <meta property="og:image:width"  content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt"    content={title} />
+  <meta property="og:locale"       content="en_ZA" />
+  <meta property="og:site_name"    content="Venue Oaón" />
 
-  <!-- Twitter -->
+  <!-- Twitter / X -->
   <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:site"        content="@venueoaon" />
   <meta name="twitter:title"       content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image"       content={new URL(ogImage, Astro.site ?? 'https://venueoaon.co.za')} />
+  <meta name="twitter:image:alt"   content={title} />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />

@@ -2,15 +2,56 @@
 import BaseLayout from "../components/layout/BaseLayout.astro";
 import PageHero from "../components/sections/PageHero.astro";
 
-// TODO: Replace 27000000000 with the real WhatsApp number before go-live
 const WA_NUMBER = "27761823532";
 const WA_MSG = encodeURIComponent("Hi, I'd like to enquire about Venue Oaón");
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    { "@type": "Question", name: "Do you charge corkage?", acceptedAnswer: { "@type": "Answer", text: "Never. Bring your own wine, champagne, spirits, or soft drinks. No corkage fees, no hidden charges." } },
+    { "@type": "Question", name: "Can I bring my own caterer?", acceptedAnswer: { "@type": "Answer", text: "Absolutely. Venue Oaón is fully self-catering. Bring your own food, order from your favourite restaurant, or hire a caterer." } },
+    { "@type": "Question", name: "How do I get pricing for Venue Oaón?", acceptedAnswer: { "@type": "Answer", text: "We don't publish pricing because every event is different: guest count, suite, package, and add-ons all affect the final quote. Fill in the enquiry form and we'll come back to you with a full breakdown." } },
+    { "@type": "Question", name: "Can I book more than one suite?", acceptedAnswer: { "@type": "Answer", text: "Yes: you can book multiple suites for the same time slot if your event needs more space." } },
+    { "@type": "Question", name: "What time slots are available at Venue Oaón?", acceptedAnswer: { "@type": "Answer", text: "We run two time slots per day: morning (08:00–13:00) and afternoon (14:00–19:00)." } },
+    { "@type": "Question", name: "Is there parking at Venue Oaón?", acceptedAnswer: { "@type": "Answer", text: "Yes: on-site secured parking for all guests." } },
+    { "@type": "Question", name: "Do I need to use Oaón Events for décor?", acceptedAnswer: { "@type": "Answer", text: "No. You're welcome to bring your own décor team. However, all packages are offered through Oaón Events and we recommend them highly." } },
+  ],
+};
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  name: "Contact Venue Oaón",
+  url: "https://venueoaon.co.za/contact",
+  description: "Enquire about booking Venue Oaón in Montana, Pretoria for baby showers, kitchen teas, bridal showers and birthdays.",
+  mainEntity: {
+    "@type": "LocalBusiness",
+    name: "Venue Oaón",
+    url: "https://venueoaon.co.za",
+    telephone: "+27761823532",
+    email: "info@venueoaon.co.za",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "978 Veda Ave, Montana AH",
+      addressLocality: "Montana",
+      addressRegion: "Pretoria",
+      postalCode: "0186",
+      addressCountry: "ZA",
+    },
+    openingHours: ["Mo-Su 08:00-13:00", "Mo-Su 14:00-19:00"],
+    hasMap: "https://maps.google.com/?q=978+Veda+Ave,+Montana+AH,+Pretoria,+0186",
+  },
+};
 ---
 
 <BaseLayout
-  title="Contact: Venue Oaón"
-  description="Enquire about Venue Oaón in Montana, Pretoria. Book a site visit or begin planning your event."
+  title="Contact & Enquiries | Venue Oaón Montana Pretoria"
+  description="Book a site visit or enquire about Venue Oaón in Montana, Pretoria. Baby showers, kitchen teas, bridal showers & birthdays. We respond within 24 hours."
+  ogImage="/images/hero_bg_1.jpg"
 >
+  <script is:inline type="application/ld+json" slot="head" set:html={JSON.stringify(schema)} />
+  <script is:inline type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
   <PageHero
     eyebrow="Begin the Inquiry"
     title="Tell us about<br />your moment."

@@ -3,12 +3,53 @@ import BaseLayout from '../components/layout/BaseLayout.astro';
 import PageHero from '../components/sections/PageHero.astro';
 import PackagesGrid from '../components/sections/PackagesGrid.astro';
 import Button from '../components/ui/Button.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Venue Oaón Décor Packages",
+  description: "Décor packages for events at Venue Oaón, Montana Pretoria, offered through Oaón Events.",
+  url: "https://venueoaon.co.za/packages",
+  numberOfItems: 4,
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Essential Package",
+      description: "Balloon arch, 10 bamboo chairs, basic florals. Ideal for intimate kitchen teas and simple birthday lunches.",
+      url: "https://venueoaon.co.za/packages",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Signature Package",
+      description: "Custom balloon arch, 20 chairs, styled backdrop, fresh florals, setup and breakdown. For baby showers, kitchen teas and bridal showers.",
+      url: "https://venueoaon.co.za/packages",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "Premier Package",
+      description: "Full design, 30 chairs, balloon installation, themed backdrop, catering coordination. For bridal showers and milestone birthdays.",
+      url: "https://venueoaon.co.za/packages",
+    },
+    {
+      "@type": "ListItem",
+      position: 4,
+      name: "Grand Package",
+      description: "Bespoke design, floral ceiling installation, custom neon, catering and staff, photography, full event management.",
+      url: "https://venueoaon.co.za/packages",
+    },
+  ],
+};
 ---
 
 <BaseLayout
-  title="Packages: Venue Oaón"
-  description="Décor packages for your event at Venue Oaón: from Essential to Grand, in partnership with Oaón Events."
+  title="Décor Packages | Venue Oaón Montana Pretoria"
+  description="Choose from Essential to Grand décor packages for your event at Venue Oaón, Montana Pretoria. Baby showers, bridal showers & birthdays. Enquire for pricing."
+  ogImage="/images/hero_bg_1.jpg"
 >
+  <script is:inline type="application/ld+json" slot="head" set:html={JSON.stringify(schema)} />
   <PageHero
     eyebrow="Décor & Packages"
     title="Décor done<br />for you."
@@ -18,8 +59,8 @@ import Button from '../components/ui/Button.astro';
   <section class="section">
     <div class="wrap">
       <div class="reveal" style="max-width:640px;">
-        <span class="label" style="display:block;margin-bottom:1rem;">In partnership with Oaón Events</span>
-        <p class="pkg-intro-title">Every package is offered through our sister company, Oaón Events: a team that has spent a decade turning rooms into moments.</p>
+        <span class="label" style="display:block;margin-bottom:1rem;">In partnership with <a href="https://oaonevents.co.za/" target="_blank" rel="noopener noreferrer" class="partner-inline-link">Oaón Events</a></span>
+        <p class="pkg-intro-title">Every package is offered through our sister company, <a href="https://oaonevents.co.za/" target="_blank" rel="noopener noreferrer" class="partner-inline-link">Oaón Events</a>: a team that has spent a decade turning rooms into moments.</p>
         <p class="pkg-intro-body">Choose your package, add it to your suite hire, and arrive to a space that's already been made beautiful. All pricing is shared on enquiry: every event is different, and we want to quote you properly.</p>
       </div>
 
@@ -95,6 +136,8 @@ import Button from '../components/ui/Button.astro';
 </BaseLayout>
 
 <style>
+  .partner-inline-link { color: #8B6448; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(139,100,72,0.4); transition: text-decoration-color 0.2s; }
+  .partner-inline-link:hover { text-decoration-color: #8B6448; }
   .pkg-intro-title { font-size: clamp(1.25rem,2.5vw,1.75rem); font-family: 'Tenor Sans', serif; font-weight: 400; letter-spacing: 0.02em; line-height: 1.4; color: #1A1A1A; margin-bottom: 1.25rem; }
   .pkg-intro-body  { font-size: var(--text-body); color: #8C8578; line-height: 1.75; }
 

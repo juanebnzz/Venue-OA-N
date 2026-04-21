@@ -2,12 +2,38 @@
 import BaseLayout from "../components/layout/BaseLayout.astro";
 import PageHero from "../components/sections/PageHero.astro";
 import Button from "../components/ui/Button.astro";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Venue Oaón",
+  url: "https://venueoaon.co.za",
+  email: "info@venueoaon.co.za",
+  telephone: "+27761823532",
+  foundingDate: "2024",
+  description: "An intimate event venue in Montana, Pretoria, born from over a decade of professional events experience.",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "978 Veda Ave, Montana AH",
+    addressLocality: "Montana",
+    addressRegion: "Pretoria",
+    postalCode: "0186",
+    addressCountry: "ZA",
+  },
+  logo: "https://venueoaon.co.za/images/venue-oaon-logo.png",
+  image: "https://venueoaon.co.za/images/hero_bg_1.jpg",
+  sameAs: [
+    "https://maps.google.com/?q=978+Veda+Ave,+Montana+AH,+Pretoria,+0186",
+  ],
+};
 ---
 
 <BaseLayout
-  title="About: Venue Oaón"
-  description="The story behind Venue Oaón, an intimate event space in Montana, Pretoria born from a genuine love of hosting."
+  title="About Venue Oaón | Montana, Pretoria Event Space"
+  description="The story behind Venue Oaón — an intimate event space in Montana, Pretoria built from over a decade of professional events experience. Meet the people behind the venue."
+  ogImage="/images/hero_bg_1.jpg"
 >
+  <script is:inline type="application/ld+json" slot="head" set:html={JSON.stringify(schema)} />
   <PageHero eyebrow="Our Story" title="Born from a<br />love of hosting." />
 
   <!-- STORY -->
@@ -111,10 +137,10 @@ import Button from "../components/ui/Button.astro";
           <div>
             <span class="partner-label">Our sister company</span>
             <h2 class="partner-heading">
-              Oaón Events: where the décor happens.
+              <a href="https://oaonevents.co.za/" target="_blank" rel="noopener noreferrer" class="partner-heading-link">Oaón Events</a>: where the décor happens.
             </h2>
             <p class="partner-body">
-              Every décor package at Venue Oaón is offered through Oaón Events.
+              Every décor package at Venue Oaón is offered through <a href="https://oaonevents.co.za/" target="_blank" rel="noopener noreferrer" class="partner-body-link">Oaón Events</a>.
               The same team, the same eye for detail: just focused entirely on
               making your space beautiful.
             </p>
@@ -391,6 +417,22 @@ import Button from "../components/ui/Button.astro";
     color: rgba(255, 255, 255, 0.6);
     line-height: 1.75;
   }
+  .partner-heading-link {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: rgba(255, 255, 255, 0.35);
+    transition: text-decoration-color 0.2s;
+  }
+  .partner-heading-link:hover { text-decoration-color: rgba(255, 255, 255, 0.85); }
+  .partner-body-link {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(255, 255, 255, 0.3);
+    transition: color 0.2s, text-decoration-color 0.2s;
+  }
+  .partner-body-link:hover { color: #fff; text-decoration-color: rgba(255, 255, 255, 0.7); }
 
   .btn-white {
     display: inline-flex;

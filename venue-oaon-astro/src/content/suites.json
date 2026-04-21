@@ -7,7 +7,8 @@
     "morning": "08:00 – 13:00",
     "afternoon": "14:00 – 19:00",
     "desc": "White-washed walls and soft natural light : suited to kitchen teas, bridal showers, and intimate birthday lunches.",
-    "gradientClass": "suite-img--myrrh"
+    "gradientClass": "suite-img--myrrh",
+    "image": "/images/MyrhSuite.jpg"
   },
   {
     "id": "olive",
@@ -17,7 +18,8 @@
     "morning": "08:00 – 13:00",
     "afternoon": "14:00 – 19:00",
     "desc": "A hybrid space flowing from an indoor lounge into an outdoor patio : ideal for baby showers where natural light matters.",
-    "gradientClass": "suite-img--olive"
+    "gradientClass": "suite-img--olive",
+    "image": "/images/Oa%C3%B3n%20(98).jpg"
   },
   {
     "id": "garden",
@@ -27,6 +29,7 @@
     "morning": "08:00 – 13:00",
     "afternoon": "14:00 – 19:00",
     "desc": "An open garden setting dressed with greenery and dappled shade : beautiful for larger groups celebrating in fresh air.",
-    "gradientClass": "suite-img--garden"
+    "gradientClass": "suite-img--garden",
+    "image": "/images/GardenSuite.jpg"
   }
 ]
