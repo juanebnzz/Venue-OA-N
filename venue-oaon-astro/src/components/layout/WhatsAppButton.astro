@@ -27,8 +27,8 @@ const WA_MSG = encodeURIComponent("Hi, I'd like to enquire about Venue Oaón");
 <style>
   .wa-float {
     position: fixed;
-    bottom: calc(28px + env(safe-area-inset-bottom, 0px));
-    right: calc(28px + env(safe-area-inset-right, 0px));
+    bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+    right: calc(24px + env(safe-area-inset-right, 0px));
     z-index: 300;
     width: 54px;
     height: 54px;
@@ -63,9 +63,19 @@ const WA_MSG = encodeURIComponent("Hi, I'd like to enquire about Venue Oaón");
   .wa-float::before {
     content: "";
     position: absolute;
-    inset: -4px;
+    inset: 0;
     border-radius: 50%;
     border: 1.5px solid rgba(37, 211, 102, 0.4);
     animation: wa-pulse 2.5s ease-out infinite;
+    z-index: -1;
+  }
+  @media (max-width: 480px) {
+    .wa-float {
+      bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+      right: calc(16px + env(safe-area-inset-right, 0px));
+      width: 48px;
+      height: 48px;
+    }
+    .wa-float svg { width: 22px; height: 22px; }
   }
 </style>
