@@ -16,13 +16,11 @@ function isActive(href: string) {
 ---
 
 <nav class="nav" role="navigation" aria-label="Main navigation">
-  <a href="/" class="nav-logo" aria-label="Venue Oaón — Home">
+  <a href="/" class="nav-logo" aria-label="Venue Oaón: Home">
     <img
       src="/images/venue-oaon-logo.png"
       alt="Venue Oaón Logo"
-      width="120"
-      height="48"
-      style="height:48px;width:auto;object-fit:contain;"
+      class="nav-logo-img"
     />
   </a>
 
@@ -48,7 +46,7 @@ function isActive(href: string) {
   </div>
 </nav>
 
-<!-- Mobile menu — uses max-height transition, NOT display toggle -->
+<!-- Mobile menu : uses max-height transition, NOT display toggle -->
 <nav
   class="mobile-menu"
   id="mob"
@@ -78,6 +76,23 @@ function isActive(href: string) {
     transition: box-shadow 0.3s ease;
   }
   .nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.06); }
+  
+  .nav-logo-img {
+    height: 80px;
+    width: auto;
+    object-fit: contain;
+    transition: height 0.3s ease;
+  }
+  @media (max-width: 768px) {
+    .nav-logo-img {
+      height: 60px;
+    }
+  }
+  @media (max-width: 480px) {
+    .nav-logo-img {
+      height: 46px;
+    }
+  }
 
   .nav-links {
     display: none;

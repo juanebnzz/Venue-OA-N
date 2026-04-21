@@ -8,7 +8,7 @@ const WA_MSG = encodeURIComponent("Hi, I'd like to enquire about Venue Oaón");
 ---
 
 <BaseLayout
-  title="Contact — Venue Oaón"
+  title="Contact: Venue Oaón"
   description="Enquire about Venue Oaón in Montana, Pretoria. Book a site visit or begin planning your event."
 >
   <PageHero
@@ -37,9 +37,10 @@ const WA_MSG = encodeURIComponent("Hi, I'd like to enquire about Venue Oaón");
               >
               <div class="contact-detail-body">
                 <span class="contact-detail-label">Address</span>
-                <span class="contact-detail-val"
-                  >Montana, Pretoria<br />Gauteng, South Africa</span
-                >
+                <span class="contact-detail-val">
+                  978 Veda Ave, Montana AH<br />
+                  Pretoria, 0186, South Africa
+                </span>
               </div>
             </div>
 
@@ -168,28 +169,30 @@ const WA_MSG = encodeURIComponent("Hi, I'd like to enquire about Venue Oaón");
           </div>
 
           <!-- Map placeholder -->
-          <div class="aside-block">
+          <div class="aside-block reveal d1">
             <span class="aside-block-title">Location</span>
-            <div
-              class="map-ph"
-              aria-label="Map placeholder — replace with Google Maps embed"
-            >
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="0.75"
-                aria-hidden="true"
-                ><path
-                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
-                ></path><circle cx="12" cy="9" r="2.5"></circle></svg
+            <div class="map-container">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3596.241328905295!2d28.25712167623545!3d-25.66333333333333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e95640000000001%3A0x0!2zOTc4IFZlZGEgQXZlLCBNb250YW5hIEFILCBQcmV0b3JpYSwgMDE4Ng!5e0!3m2!1sen!2sza!4v1713693000000!5m2!1sen!2sza" 
+                width="100%" 
+                height="260" 
+                style="border:0; border-radius: 8px;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Google Maps location of Venue Oaón"
+              ></iframe>
+              <a 
+                href="https://maps.google.com/?q=978+Veda+Ave,+Montana+AH,+Pretoria,+0186" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="map-link"
               >
-              <span>Montana, Pretoria</span>
-              <span style="opacity:0.6;font-size:0.5rem;"
-                >Add Google Maps embed here</span
-              >
+                <span>Open in Google Maps</span>
+                <svg width="14" height="14" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15.8333 15.8333H4.16667V4.16667H10V2.5H4.16667C3.24167 2.5 2.5 3.25 2.5 4.16667V15.8333C2.5 16.75 3.24167 17.5 4.16667 17.5H15.8333C16.75 17.5 17.5 16.75 17.5 15.8333V10H15.8333V15.8333ZM11.6667 2.5V4.16667H14.6583L6.46667 12.3583L7.64167 13.5333L15.8333 5.34167V8.33333H17.5V2.5H11.6667Z" fill="currentColor"/>
+                </svg>
+              </a>
             </div>
           </div>
         </div>
@@ -198,7 +201,7 @@ const WA_MSG = encodeURIComponent("Hi, I'd like to enquire about Venue Oaón");
         <div class="form-card reveal d2">
           <h2 class="form-card-title">Begin the Inquiry</h2>
           <p class="form-card-sub">
-            Fill in what you know — we'll follow up within 24 hours to talk
+            Fill in what you know: we'll follow up within 24 hours to talk
             through the rest. No commitment, just a conversation.
           </p>
           <form id="contact-form" method="POST" novalidate>
@@ -211,7 +214,7 @@ const WA_MSG = encodeURIComponent("Hi, I'd like to enquire about Venue Oaón");
             <input
               type="hidden"
               name="subject"
-              value="New Enquiry — Venue Oaón"
+              value="New Enquiry: Venue Oaón"
             />
             <input type="checkbox" name="botcheck" style="display:none" />
 
@@ -317,7 +320,7 @@ const WA_MSG = encodeURIComponent("Hi, I'd like to enquire about Venue Oaón");
             class="form-feedback form-feedback--success"
             style="display:none;"
           >
-            <p class="form-feedback-title">Thank you — we'll be in touch.</p>
+            <p class="form-feedback-title">Thank you: we'll be in touch.</p>
             <p class="form-feedback-body">
               We aim to respond within 24 hours. We'll follow up with full
               details for your event.
@@ -363,23 +366,23 @@ const WA_MSG = encodeURIComponent("Hi, I'd like to enquire about Venue Oaón");
             },
             {
               q: "How do I get pricing?",
-              a: "We don't publish pricing because every event is different — guest count, suite, package, and add-ons all affect the final quote. Fill in the form above and we'll come back to you with a full breakdown.",
+              a: "We don't publish pricing because every event is different: guest count, suite, package, and add-ons all affect the final quote. Fill in the form above and we'll come back to you with a full breakdown.",
             },
             {
               q: "Can I book more than one suite?",
-              a: "Yes — you can book multiple suites for the same time slot if your event needs more space. We'll discuss what makes sense when you enquire.",
+              a: "Yes: you can book multiple suites for the same time slot if your event needs more space. We'll discuss what makes sense when you enquire.",
             },
             {
               q: "What time slots are available?",
-              a: "We run two time slots per day — morning (08:00–13:00) and afternoon (14:00–19:00). Each slot gives you a freshly prepared space. We don't run back-to-back events in the same suite.",
+              a: "We run two time slots per day: morning (08:00–13:00) and afternoon (14:00–19:00). Each slot gives you a freshly prepared space. We don't run back-to-back events in the same suite.",
             },
             {
               q: "Is there parking?",
-              a: "Yes — on-site secured parking for all guests. No street parking stress on the day of your event.",
+              a: "Yes: on-site secured parking for all guests. No street parking stress on the day of your event.",
             },
             {
               q: "Do I need to use Oaón Events for décor?",
-              a: "No. You're welcome to bring your own décor team. However, all our packages are offered through Oaón Events and we recommend them highly — they know the space well and the coordination is seamless.",
+              a: "No. You're welcome to bring your own décor team. However, all our packages are offered through Oaón Events and we recommend them highly : they know the space well and the coordination is seamless.",
             },
           ].map(({ q, a }) => (
             <details class="faq-item reveal">
@@ -401,7 +404,7 @@ const WA_MSG = encodeURIComponent("Hi, I'd like to enquire about Venue Oaón");
 <style>
   .contact-grid {
     display: grid;
-    gap: clamp(4rem, 8vw, 7rem);
+    gap: clamp(2.5rem, 8vw, 7rem);
     grid-template-columns: 1fr;
   }
   @media (min-width: 900px) {
@@ -481,7 +484,7 @@ const WA_MSG = encodeURIComponent("Hi, I'd like to enquire about Venue Oaón");
     gap: 1.25rem;
     text-decoration: none;
     transition: background 0.2s;
-    /* Acts as a CTA card — ensure keyboard visibility */
+    /* Acts as a CTA card : ensure keyboard visibility */
   }
   .wa-option:hover { background: #e5f7eb; }
   .wa-option:focus-visible { outline: 2px solid #25d366; outline-offset: 2px; border-radius: 8px; }
@@ -547,22 +550,29 @@ const WA_MSG = encodeURIComponent("Hi, I'd like to enquire about Venue Oaón");
     text-align: right;
   }
 
-  .map-ph {
-    background: linear-gradient(135deg, #eae3da, #d5ccbf);
-    border-radius: 8px;
-    height: 220px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 0.75rem;
-    color: #8c8578;
-    font-size: var(--text-xs);
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    border: 0.5px solid #e0ddd8;
+  .map-container {
     margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
+  .map-container iframe {
+    height: clamp(180px, 35vw, 260px);
+    width: 100%;
+  }
+  .map-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: var(--text-xs);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #8b6448;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .map-link:hover { color: #1a1a1a; }
 
   .form-card {
     background: #f5f2ee;
@@ -616,7 +626,7 @@ const WA_MSG = encodeURIComponent("Hi, I'd like to enquire about Venue Oaón");
   .faq-item:first-child {
     border-top: 0.5px solid #e0ddd8;
   }
-  /* FAQ summary is interactive — needs keyboard target and focus indicator */
+  /* FAQ summary is interactive : needs keyboard target and focus indicator */
   .faq-q {
     padding: 1.25rem 0;
     font-family: "Tenor Sans", serif;

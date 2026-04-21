@@ -22,7 +22,7 @@ const WA_NUMBER = "27761823532";
         name="access_key"
         value="a99d482b-7729-4551-8bb6-08de2e564d4a"
       />
-      <input type="hidden" name="subject" value="New Enquiry — Venue Oaón" />
+      <input type="hidden" name="subject" value="New Enquiry: Venue Oaón" />
       <input type="checkbox" name="botcheck" style="display:none" />
 
       <div class="form-grid">
@@ -81,7 +81,7 @@ const WA_NUMBER = "27761823532";
       class="form-feedback form-feedback--success"
       style="display:none;"
     >
-      <p class="form-feedback-title">Thank you — we'll be in touch.</p>
+      <p class="form-feedback-title">Thank you: we'll be in touch.</p>
       <p class="form-feedback-body">We aim to respond within 24 hours.</p>
     </div>
     <div
@@ -139,7 +139,7 @@ const WA_NUMBER = "27761823532";
     line-height: 1.75;
   }
 
-  /* Ghost button — bordered, 48px tall, meets WCAG 2.5.5 touch target */
+  /* Ghost button: bordered, 48px tall, meets WCAG 2.5.5 touch target */
   .btn-ol-light {
     display: inline-flex;
     align-items: center;
@@ -157,6 +157,10 @@ const WA_NUMBER = "27761823532";
     transition: background 0.22s ease, border-color 0.22s ease;
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
+  }
+  @media (max-width: 640px) {
+    .btn-ol-light { width: 100%; }
+    .btn-submit { width: 100%; }
   }
   .btn-ol-light:hover {
     background: rgba(255, 255, 255, 0.12);

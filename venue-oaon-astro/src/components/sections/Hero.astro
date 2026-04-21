@@ -54,7 +54,7 @@ import Button from "../ui/Button.astro";
   }
 
   /* Dual-axis overlay: left-column gradient for text legibility (WCAG 4.5:1)
-     plus a bottom vignette for depth — image stays visible on the right. */
+     plus a bottom vignette for depth : image stays visible on the right. */
   .hero-bg::after {
     content: "";
     position: absolute;
@@ -110,11 +110,11 @@ import Button from "../ui/Button.astro";
     background: #8c8578;
   }
 
-  /* Editorial type scale — desktop H1 ≥ 4× body (1rem × 4 = 4rem min).
+  /* Editorial type scale : desktop H1 ≥ 4× body (1rem × 4 = 4rem min).
      8rem (128px) at full width keeps hierarchy dominant and tight. */
   .hero-h1 {
     font-family: "Tenor Sans", serif;
-    font-size: clamp(4rem, 9.5vw, 8rem);
+    font-size: clamp(3.5rem, 8vw, 6rem);
     font-weight: 400;
     line-height: 1.1;
     letter-spacing: 0.01em;
@@ -145,7 +145,7 @@ import Button from "../ui/Button.astro";
     align-items: center;
   }
 
-  /* Ghost CTA — bordered 'ghost-light' style with a guaranteed 44×44px touch
+  /* Ghost CTA : bordered 'ghost-light' style with a guaranteed 44×44px touch
      target, meeting WCAG 2.5.5 (AA) pointer target size requirements. */
   .hero-ghost-btn {
     display: inline-flex;
@@ -176,6 +176,8 @@ import Button from "../ui/Button.astro";
   }
 
   @media (max-width: 768px) {
+    .hero-tag { display: none; }
+
     /* Stack vertically, centre the bg, glassmorphism backing for legibility */
     .hero {
       align-items: flex-end;
@@ -186,7 +188,7 @@ import Button from "../ui/Button.astro";
       padding: 1.75rem 1.5rem;
       padding-right: 1.5rem;
       max-width: 100%;
-      /* Glassmorphism block — ensures text legibility over busy image areas */
+      /* Glassmorphism block : ensures text legibility over busy image areas */
       background: rgba(10, 8, 6, 0.52);
       backdrop-filter: blur(14px) saturate(140%);
       -webkit-backdrop-filter: blur(14px) saturate(140%);
@@ -195,7 +197,7 @@ import Button from "../ui/Button.astro";
     }
 
     .hero-h1 {
-      font-size: clamp(3rem, 12vw, 5rem);
+      font-size: clamp(2.5rem, 10vw, 4rem);
       line-height: 1.1;
       max-width: 100%;
     }

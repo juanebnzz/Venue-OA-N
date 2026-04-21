@@ -98,7 +98,7 @@ textarea { min-height: 130px; resize: vertical; }
   gap: 1.25rem;
   grid-template-columns: 1fr;
 }
-@media (min-width: 600px) { .form-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 680px) { .form-grid { grid-template-columns: 1fr 1fr; } }
 
 .fg             { display: flex; flex-direction: column; gap: 0.5rem; }
 .fg--full       { grid-column: 1 / -1; }
