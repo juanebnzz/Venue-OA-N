@@ -19,7 +19,7 @@ const { name, type, capacity, morning, afternoon, desc, gradientClass, image, cl
 <article class={`suite-card${extra ? ' ' + extra : ''}`}>
   <div class={`suite-img ${gradientClass}`}>
     {image
-      ? <img src={image} alt={name} class="suite-img-photo" />
+      ? <img src={image} alt={name} class="suite-img-photo" width="800" height="533" />
       : <span class="suite-img-label" aria-hidden="true">Add photo</span>
     }
   </div>
