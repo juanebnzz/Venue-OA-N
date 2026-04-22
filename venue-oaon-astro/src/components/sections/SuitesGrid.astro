@@ -11,10 +11,9 @@ import suites from '../../content/suites.json';
     </div>
     <div class="suites-grid">
       {suites.map((suite, i) => (
-        <SuiteCard
-          {...suite}
-          class={`reveal${i === 1 ? ' d1' : i === 2 ? ' d2' : ''}`}
-        />
+        <div class={`reveal${i === 1 ? ' d1' : i === 2 ? ' d2' : ''}`}>
+          <SuiteCard {...suite} />
+        </div>
       ))}
     </div>
   </div>

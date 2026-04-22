@@ -7,17 +7,17 @@ interface Props {
   capacity: string;
   morning: string;
   afternoon: string;
+  evening: string;
   sunday: string;
   desc: string;
   gradientClass: string;
   image?: string;
-  class?: string;
 }
 
-const { name, type, capacity, morning, afternoon, sunday, desc, gradientClass, image, class: extra = '' } = Astro.props;
+const { name, type, capacity, morning, afternoon, evening, sunday, desc, gradientClass, image } = Astro.props;
 ---
 
-<article class={`suite-card${extra ? ' ' + extra : ''}`}>
+<article class="suite-card">
   <div class={`suite-img ${gradientClass}`}>
     {image
       ? <img src={image} alt={name} class="suite-img-photo" />
@@ -42,6 +42,10 @@ const { name, type, capacity, morning, afternoon, sunday, desc, gradientClass, i
       <div class="suite-row">
         <span class="suite-row-label">Afternoon</span>
         <span class="suite-row-val">{afternoon}</span>
+      </div>
+      <div class="suite-row">
+        <span class="suite-row-label">Evening</span>
+        <span class="suite-row-val">{evening}</span>
       </div>
       <div class="suite-row">
         <span class="suite-row-val suite-row-val--note">{sunday}</span>

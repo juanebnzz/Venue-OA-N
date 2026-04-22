@@ -13,7 +13,7 @@ const faqSchema = {
     { "@type": "Question", name: "Can I bring my own caterer?", acceptedAnswer: { "@type": "Answer", text: "Absolutely. Venue Oaón is fully self-catering. Bring your own food, order from your favourite restaurant, or hire a caterer." } },
     { "@type": "Question", name: "How do I get pricing for Venue Oaón?", acceptedAnswer: { "@type": "Answer", text: "We don't publish pricing because every event is different: guest count, suite, package, and add-ons all affect the final quote. Fill in the enquiry form and we'll come back to you with a full breakdown." } },
     { "@type": "Question", name: "Can I book more than one suite?", acceptedAnswer: { "@type": "Answer", text: "Yes: you can book multiple suites for the same time slot if your event needs more space." } },
-    { "@type": "Question", name: "What time slots are available at Venue Oaón?", acceptedAnswer: { "@type": "Answer", text: "We run two time slots per day: morning (08:00–13:00) and afternoon (14:00–19:00). On Sundays the venue closes at 15:00." } },
+    { "@type": "Question", name: "What time slots are available at Venue Oaón?", acceptedAnswer: { "@type": "Answer", text: "We run three time slots per day: morning (08:00–12:00), afternoon (13:00–17:00), and evening (18:00–22:00). On Sundays the venue closes at 15:00." } },
     { "@type": "Question", name: "Is there parking at Venue Oaón?", acceptedAnswer: { "@type": "Answer", text: "Yes: on-site secured parking for all guests." } },
     { "@type": "Question", name: "Do I need to use Oaón Events for décor?", acceptedAnswer: { "@type": "Answer", text: "No. You're welcome to bring your own décor team. However, all packages are offered through Oaón Events and we recommend them highly." } },
   ],
@@ -39,7 +39,7 @@ const schema = {
       postalCode: "0186",
       addressCountry: "ZA",
     },
-    openingHours: ["Mo-Sa 08:00-13:00", "Mo-Sa 14:00-19:00", "Su 08:00-13:00", "Su 14:00-15:00"],
+    openingHours: ["Mo-Sa 08:00-12:00", "Mo-Sa 13:00-17:00", "Mo-Sa 18:00-22:00", "Su 08:00-12:00", "Su 13:00-15:00"],
     hasMap: "https://maps.google.com/?q=978+Veda+Ave,+Montana+AH,+Pretoria,+0186",
   },
 };
@@ -156,7 +156,7 @@ const schema = {
               >
               <div class="contact-detail-body">
                 <span class="contact-detail-label">Time slots</span>
-                <span class="contact-detail-val">08:00–13:00 · 14:00–19:00 · Sun closes 15:00</span
+                <span class="contact-detail-val">08:00–12:00 · 13:00–17:00 · 18:00–22:00 · Sun closes 15:00</span
                 >
               </div>
             </div>
@@ -415,7 +415,7 @@ const schema = {
             },
             {
               q: "What time slots are available?",
-              a: "We run two time slots per day: morning (08:00–13:00) and afternoon (14:00–19:00). On Sundays the venue closes at 15:00. Each slot gives you a freshly prepared space. We don't run back-to-back events in the same suite.",
+              a: "We run three time slots per day: morning (08:00–12:00), afternoon (13:00–17:00), and evening (18:00–22:00). On Sundays the venue closes at 15:00. Each slot gives you a freshly prepared space. We don't run back-to-back events in the same suite.",
             },
             {
               q: "Is there parking?",
